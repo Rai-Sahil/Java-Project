@@ -1,6 +1,8 @@
 package org.example;
 
+
 import processing.core.PConstants;
+
 
 public class Asteroid {
 
@@ -9,12 +11,15 @@ public class Asteroid {
     float size;
     float randDir;//Radian Value for the direction
     float speed;// Pixels move per frame
+    Player player;
+
 
     Asteroid(Window window){
         RandPosition(window);
         size = 50;
-        randDir = window.random(0, 22);
+        randDir = window.random(0, PConstants.TWO_PI);
         speed = 2;
+        player = new Player(window);
     }
 
     public void Update(Window window){
@@ -24,7 +29,7 @@ public class Asteroid {
         posY += window.sin(randDir)*speed;
 
         //! Potential Bugs Here
-        Edge(window);
+        Edge(window, player);
     }
 
     public void Render(Window window){
@@ -38,11 +43,12 @@ public class Asteroid {
     }
 
     //! Potential Bugs Here
-    private void Edge(Window window){
-        if (posX > window.width){ posX = 0;}
-        if (posX < 0) {posX = window.width;}
-        if(posY > window.height){ posY = 0;}
-        if (posY < 0){ posY = window.height;}
+    //?Fixed But Still not final.
+    private void Edge(Window window, Player player){
+        if (posX > window.width){ posX = -player.asteroidsX;}
+        if (posX < -player.asteroidsX) {posX = window.width;}
+        if(posY > window.height){ posY = -player.asteroidsY;}
+        if (posY < -player.asteroidsY){ posY = window.height;}
     }
 
     private void RandPosition(Window window){

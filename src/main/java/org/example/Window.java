@@ -28,7 +28,7 @@ public class Window extends PApplet{
     }
 
     public void settings(){
-        size(1000, 770);
+        size(1000, 800);
     }
 
     public void draw(){

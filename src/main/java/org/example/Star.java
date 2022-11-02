@@ -3,7 +3,7 @@ package org.example;
 import processing.core.PApplet;
 import processing.core.PVector;
 
-public class Star extends PApplet {
+public class Star{
 
     public static final int max_weight = 7;
     PVector pos;
@@ -14,9 +14,9 @@ public class Star extends PApplet {
     int TOP_SPEED = 3;
 
     Star(Window window){
-        this.pos = new PVector(random(window.width), random(window.height));
-        this.size = random(max_weight);
-        this.speed = map(this.size, 0, max_weight, 1,TOP_SPEED);
+        this.pos = new PVector(window.random(window.width), window.random(window.height));
+        this.size = window.random(max_weight);
+        this.speed = window.map(this.size, 0, max_weight, 1,TOP_SPEED);
         this.colour = (255 / max_weight) * this.size;
     }
 

@@ -10,7 +10,6 @@ public class Player {
     int isRotating;
 
     Player(Window window){
-        window.frameRate(60);
         asteroidsX = window.width / 2;
         asteroidsY = window.height /2;
         asteroidsSize = 15;
