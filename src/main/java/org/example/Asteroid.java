@@ -9,7 +9,6 @@ public class Asteroid {
     float size;
     float randDir;//Radian Value for the direction
     float speed;// Pixels move per frame
-    Player player;
 
 
     Asteroid(Window window){
@@ -17,7 +16,6 @@ public class Asteroid {
         size = 50;
         randDir = window.random(0, PConstants.TWO_PI);
         speed = 2;
-        player = new Player(window);
     }
 
     public void Update(Window window){
@@ -27,7 +25,7 @@ public class Asteroid {
         posY += window.sin(randDir)*speed;
 
         //! Potential Bugs Here
-        Edge(window, player);
+        Edge(window);
     }
 
     public void Render(Window window){
@@ -42,7 +40,7 @@ public class Asteroid {
 
     //! Potential Bugs Here
     //?Fixed But Still not final.
-    private void Edge(Window window, Player player){
+    private void Edge(Window window){
         if (posX > window.width){ posX = 0;}
         if (posX < 0) {posX = window.width;}
         if (posX < 0) {posX = window.width;}

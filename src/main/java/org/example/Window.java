@@ -25,7 +25,7 @@ public class Window extends PApplet{
         }
 
         asteroids = new ArrayList<Asteroid>();
-        for (int i = 0; i < floor(random(6, 10)); i++){
+        for (int i = 0; i < floor(random(20, 30)); i++){
             asteroids.add(new Asteroid(this));
             break;
         }
