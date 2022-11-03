@@ -12,7 +12,10 @@ public class Window extends PApplet{
     ArrayList<Star> stars = new ArrayList<Star>();
     Player player;
     ArrayList<Asteroid> asteroids;
+    Menu startMenu;
+    Button button;
     PVector direction;
+    int menu = 0;
 
 
     public void setup(){
@@ -20,11 +23,21 @@ public class Window extends PApplet{
             Star star = new Star(this);
             stars.add(star);
         }
-        player = new Player(this);
+
         asteroids = new ArrayList<Asteroid>();
         for (int i = 0; i < floor(random(6, 10)); i++){
             asteroids.add(new Asteroid(this));
+            break;
         }
+
+        player = new Player(this);
+
+        button = new Button(this);
+
+    }
+
+    public void setMenu(int menu) {
+        this.menu = menu;
     }
 
     public void settings(){
@@ -32,32 +45,67 @@ public class Window extends PApplet{
     }
 
     public void draw(){
-        background(0);
-        for (Star s : stars){
-            s.display(this);
 
+        background(0);
+        for (Star s : stars) {
+            s.display(this);
             // ! TO CHANGE THE SPEED OF THE OBJECT INCREASE THE VALUE OF X.
             // ! Could change the direction to move in space as well
             direction = new PVector(-2, 0);
             s.move(direction, this);
         }
 
-        //*Asteroids
         update();
         Render();
+
+//        switch(menu) {
+//            case 0:
+//                break;
+//            case 1: {
+//                //*Paste stars over here
+//                //*Asteroids
+//                update();
+//                Render();
+//            }
+//        }
     }
 
     void update(){
-        player.Update();
-        for (int i = 0; i <asteroids.size(); i++){
-            asteroids.get(i).Update(this);
+
+        switch(menu){
+            case 0:{
+                break;
+                }
+            case 1:{
+                for (int i = 0; i < asteroids.size(); i++){
+                    asteroids.get(i).Update(this);
+                }
+                player.Update();
+                break;
+            }
         }
     }
 
     void Render(){
-        player.Render(this);
-        for (int i = 0; i <asteroids.size(); i++){
-            asteroids.get(i).Render(this);
+
+        switch(menu){
+            case 0:{
+                button.Render(this);
+                break;
+            }
+            case 1:{
+                for (int i = 0; i <asteroids.size(); i++){
+                    asteroids.get(i).Render(this);
+                }
+                player.Render(this);
+                break;
+            }
+        }
+    }
+
+    public void mousePressed() {
+        if (button.overStart(this)) {
+            menu = 1;
         }
     }
 

@@ -1,6 +1,8 @@
 package org.example;
 
-public class Player {
+import processing.core.PApplet;
+
+public class Player{
 
     float MAXSPEED;
     float asteroidsX;

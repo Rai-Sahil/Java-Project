@@ -1,8 +1,6 @@
 package org.example;
 
-
 import processing.core.PConstants;
-
 
 public class Asteroid {
 
@@ -45,10 +43,11 @@ public class Asteroid {
     //! Potential Bugs Here
     //?Fixed But Still not final.
     private void Edge(Window window, Player player){
-        if (posX > window.width){ posX = -player.asteroidsX;}
-        if (posX < -player.asteroidsX) {posX = window.width;}
-        if(posY > window.height){ posY = -player.asteroidsY;}
-        if (posY < -player.asteroidsY){ posY = window.height;}
+        if (posX > window.width){ posX = 0;}
+        if (posX < 0) {posX = window.width;}
+        if (posX < 0) {posX = window.width;}
+        if(posY > window.height){ posY = 0;}
+        if (posY < 0){ posY = window.height;}
     }
 
     private void RandPosition(Window window){
