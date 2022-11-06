@@ -33,7 +33,6 @@ public class Window extends PApplet{
         player = new Player(this);
 
         button = new Button(this);
-
     }
 
     public void setMenu(int menu) {
@@ -58,22 +57,20 @@ public class Window extends PApplet{
         update();
         Render();
 
-//        switch(menu) {
-//            case 0:
-//                break;
-//            case 1: {
-//                //*Paste stars over here
-//                //*Asteroids
-//                update();
-//                Render();
-//            }
-//        }
+        switch (menu){
+            case 0:
+                button.draw(this);
+                break;
+            case 1:
+
+        }
     }
 
     void update(){
 
         switch(menu){
             case 0:{
+                button.update(this);
                 break;
                 }
             case 1:{
@@ -90,7 +87,6 @@ public class Window extends PApplet{
 
         switch(menu){
             case 0:{
-                button.Render(this);
                 break;
             }
             case 1:{
@@ -103,12 +99,16 @@ public class Window extends PApplet{
         }
     }
 
+    //If mouse is pressed over specific button
     public void mousePressed() {
-        if (button.overStart(this)) {
+        if (button.rectOver == true) {
             menu = 1;
+        } else {
+            menu = 0;
         }
     }
 
+    //If the specific key code is pressed, then rotate.
     public void keyPressed(){
         if (keyCode == 39){//Right
             player.isRotating = -1;
@@ -117,6 +117,7 @@ public class Window extends PApplet{
         }
     }
 
+    //If the specific key code is released after being pressed, then stop rotating.
     public void keyReleased(){
         if(keyCode == 39){
             player.isRotating = 0;
