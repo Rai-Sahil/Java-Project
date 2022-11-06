@@ -4,42 +4,36 @@ import processing.core.PConstants;
 
 public class Button {
 
-    float startX;
-    float startY;
-    float startLength;
-    float startWidth;
-    String t;
+    int rectX, rectY;      // Position of square button
+    int rectSize = 90;     // Diameter of rect
+    boolean rectOver = false;
+    boolean circleOver = false;
 
-    Button(Window window){
-        startX = window.width / 2;
-        startY = window.height /2;
-        startLength = 140;
-        startWidth = 50;
-        t = "hello";
+    Button(Window window) {
+        rectX = window.width/2-rectSize-10;
+        rectY = window.height/2-rectSize/2;
+        window.ellipseMode(window.CENTER);
     }
 
-//    public void Update(){
-//        if(isRotating == -1){ //Left
-//            rotation = rotation + MAXSPEED;
-//        } else if (isRotating == 1) {
-//            rotation = rotation - MAXSPEED;
-//        }
-//    }
+    public void draw(Window w) {
+        update(w);
 
-    public void Render(Window window){
-        window.noFill();
-        window.stroke(255);
-        window.strokeWeight(2);
-        window.rect(startX, startY, startLength, startWidth);
-
-        window.fill(255);
-        //window.textAlign(PConstants.CENTER, PConstants.CENTER);
-        window.text(t, startX+(window.width/2), startY+(window.height/2));
+        w.stroke(255);
+        w.strokeWeight(10);
+       w. rect(rectX, rectY, rectSize, rectSize);
     }
 
-    boolean overStart(Window window)  {
-        if (window.mouseX >= startX && window.mouseX <= startX+window.width &&
-                window.mouseY >= startY && window.mouseY <= startY+window.height) {
+    public void update(Window w) {
+       if (overRect(rectX, rectY, w) ) {
+            rectOver = true;
+        } else {
+            circleOver = rectOver = false;
+        }
+    }
+
+    public boolean overRect(int x, int y, Window w)  {
+        if (w.mouseX >= x && w.mouseX <= x+(90) &&
+                w.mouseY >= y && w.mouseY <= y+(90)) {
             return true;
         } else {
             return false;
