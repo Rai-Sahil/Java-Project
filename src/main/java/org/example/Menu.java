@@ -1,9 +1,17 @@
 package org.example;
 
 public class Menu {
-<<<<<<< HEAD
+    Button button;
 
-=======
-   
->>>>>>> 13e7c9c698cf2a31d600007f555791c88b04175a
+    Menu(Window w){
+        button = new Button(w);
+    }
+
+    void update(Window w){
+        button.update(w);
+    }
+
+    void draw(Window w) {
+        button.draw(w);
+    }
 }
