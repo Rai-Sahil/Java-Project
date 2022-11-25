@@ -2,8 +2,10 @@ package org.example;
 
 import processing.core.PApplet;
 import processing.core.PConstants;
+import processing.core.PImage;
 
 public class Asteroid {
+    PImage bot;
     float posX;
     float posY;
     float size;
@@ -15,6 +17,7 @@ public class Asteroid {
         size = 50;
         randomDir = window.random(0, PConstants.TWO_PI);
         speed = 2;
+        bot = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\asteroids.png");
     }
 
     public void Update(Window window){
@@ -29,7 +32,8 @@ public class Asteroid {
         window.noFill();
         window.stroke(255);
         window.strokeWeight(2);
-        window.circle(0, 0 , size);
+//        window.circle(0, 0 , size);
+        window.image(bot, -10, -10, size, size-10);
         window.pop();
     }
 

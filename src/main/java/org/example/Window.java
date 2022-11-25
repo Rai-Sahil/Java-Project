@@ -19,6 +19,7 @@ public class Window extends PApplet {
     IntList pixelRemove;
     int gameState; // 0 is start menu, 1 is the game, 2 is game over
     int score;
+    int result = 0;
     int round; //Levels
     int roundTitleCounter;
     boolean notRoundOne;
@@ -79,6 +80,7 @@ public class Window extends PApplet {
                 RoundUpdate();
                 Update();
                 Render();
+                result = score;
                 break;
             }
             case 2 -> {
@@ -86,7 +88,7 @@ public class Window extends PApplet {
                 background(0);
                 textSize(32);
                 text("Game Over", width*.39f, height*.26f);
-                text("You Scored: " + score, width * .35f, height * .5f);
+                text("You Scored: " + result, width * .35f, height * .5f);
                 text("Press Enter to Play Again", width * .24f, height * .8f);
                 pop();
                 break;
