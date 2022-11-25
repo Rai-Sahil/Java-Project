@@ -1,6 +1,7 @@
 package org.example;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PShape;
 import processing.data.IntList;
 
@@ -69,7 +70,7 @@ public class Window extends PApplet {
                 background(0);
                 textSize(32);
                 fill(255);
-                shape(bot, 220, 110);
+                shape(bot, 200, 150);
                 text("Press Enter", width * .38f, height * .7f);
                 pop();
                 break;

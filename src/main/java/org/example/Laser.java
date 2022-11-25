@@ -1,6 +1,9 @@
 package org.example;
 
+import processing.core.PImage;
+
 public class Laser {
+    PImage bot;
     float posX;
     float posY;
     float speed;
@@ -15,6 +18,7 @@ public class Laser {
         posX += 25*window.cos(dir);
         posY += 25*window.sin(dir);
         size = 2;
+        bot = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\kisspng-light-download-color-yellow-glare-light-effects-5a99f9b9a49f01.5350402715200403776743.png");
     }
 
     void Update(Window window){
@@ -27,7 +31,8 @@ public class Laser {
         window.noFill();
         window.stroke(255);
         window.strokeWeight(1);
-        window.rect(posX, posY, size, size + 10f);
+//        window.rect(posX, posY, size, size + 10f);
+        window.image(bot, posX-7, posY-7, 20, 20);
         window.pop();
     }
 
