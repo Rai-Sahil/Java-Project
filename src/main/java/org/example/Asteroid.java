@@ -6,6 +6,8 @@ import processing.core.PImage;
 
 public class Asteroid {
     PImage bot;
+    PImage bot2;
+    int asteroid;
     float posX;
     float posY;
     float size;
@@ -18,6 +20,8 @@ public class Asteroid {
         randomDir = window.random(0, PConstants.TWO_PI);
         speed = 2;
         bot = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\asteroids.png");
+        bot2 = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\asteroid2.png");
+        asteroid = (int) window.random(0, 2);
     }
 
     public void Update(Window window){
@@ -32,8 +36,11 @@ public class Asteroid {
         window.noFill();
         window.stroke(255);
         window.strokeWeight(2);
-//        window.circle(0, 0 , size);
-        window.image(bot, -10, -10, size, size-10);
+        if(asteroid == 0){
+            window.image(bot, -10, -10, size, size-10);
+        } else {
+            window.image(bot2, -10, -10, size, size-10);
+        }
         window.pop();
     }
 

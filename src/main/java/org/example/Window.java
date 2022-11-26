@@ -3,6 +3,7 @@ package org.example;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.core.PShape;
+import processing.core.PVector;
 import processing.data.IntList;
 
 import java.util.ArrayList;
@@ -10,8 +11,10 @@ import java.util.ArrayList;
 public class Window extends PApplet {
 
     PShape bot;
+    PImage gameOver;
     Player player;
     ArrayList<Asteroid> asteroids;
+    ArrayList<Star> stars;
     ArrayList<Pixel> pixels;
     ArrayList<Laser> lasers;
     IntList astRemove;
@@ -35,15 +38,22 @@ public class Window extends PApplet {
         frameRate(60);
         InstantiateVariables();//This gets call whenever we restart the game...
         gameState = 0;
+        bot = loadShape("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\org\\example\\rocket-3432.svg");
+        gameOver = loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\Game-Over-PNG-Image.png");
     }
 
     //Used for setup of our game when we are running it.
     void InstantiateVariables(){
         player = new Player(this);
         asteroids = new ArrayList<Asteroid>();
+        stars = new ArrayList<Star>();
 
         for (int i = 0; i < floor(random(6, 10)); i++) {
             asteroids.add(new Asteroid(this));
+        }
+
+        for (int i = 0; i < 100; i++){
+            stars.add(new Star(this));
         }
 
         lasers = new ArrayList<Laser>();
@@ -56,8 +66,6 @@ public class Window extends PApplet {
         round = 1;
         notRoundOne = false;
         roundTitleCounter = 180;
-
-        bot = loadShape("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\org\\example\\rocket-3432.svg");
     }
 
     public void settings() {
@@ -69,6 +77,11 @@ public class Window extends PApplet {
             case 0 -> {
                 push();
                 background(0);
+                for (Star s : stars){
+                    s.display(this);
+                    PVector dir = new PVector(2, 0);
+                    s.move(dir, this);
+                }
                 textSize(32);
                 fill(255);
                 shape(bot, 200, 150);
@@ -81,15 +94,22 @@ public class Window extends PApplet {
                 Update();
                 Render();
                 result = score;
+                for (Star s : stars){
+                    s.display(this);
+                }
                 break;
             }
             case 2 -> {
                 push();
                 background(0);
                 textSize(32);
-                text("Game Over", width*.39f, height*.26f);
+                image(gameOver, width * .38f, height * .1f, 200, 200);
+//                text("Game Over", width*.39f, height*.26f);
                 text("You Scored: " + result, width * .35f, height * .5f);
                 text("Press Enter to Play Again", width * .24f, height * .8f);
+                for (Star s : stars){
+                    s.display(this);
+                }
                 pop();
                 break;
             }
@@ -144,11 +164,17 @@ public class Window extends PApplet {
         }
     }
 
+    public void death(int value){
+
+    }
+
     public void Update() {
         player.Update();
         for (Asteroid asteroid : asteroids) {
             asteroid.Update(this);
-            if (player.CheckCollision(asteroid, this)) gameState = 2;
+            if (player.CheckCollision(asteroid, this)){
+                gameState = 2;
+            }
         }
 
         for (Laser laser : lasers) {
