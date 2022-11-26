@@ -11,7 +11,7 @@ public class Star{
     float colour;
     int margin = 50;
     float speed;
-    int TOP_SPEED = 3;
+    int TOP_SPEED = 1;
 
     Star(Window window){
         this.pos = new PVector(window.random(window.width), window.random(window.height));

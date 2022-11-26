@@ -93,23 +93,27 @@ public class Window extends PApplet {
                 RoundUpdate();
                 Update();
                 Render();
-                result = score;
                 for (Star s : stars){
                     s.display(this);
+                    PVector dir = new PVector(2, 0);
+                    s.move(dir, this);
                 }
+                result = score;
                 break;
             }
             case 2 -> {
                 push();
                 background(0);
+                for (Star s : stars){
+                    s.display(this);
+                    PVector dir = new PVector(2, 0);
+                    s.move(dir, this);
+                }
                 textSize(32);
                 image(gameOver, width * .38f, height * .1f, 200, 200);
 //                text("Game Over", width*.39f, height*.26f);
                 text("You Scored: " + result, width * .35f, height * .5f);
                 text("Press Enter to Play Again", width * .24f, height * .8f);
-                for (Star s : stars){
-                    s.display(this);
-                }
                 pop();
                 break;
             }
