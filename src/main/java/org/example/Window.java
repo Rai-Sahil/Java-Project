@@ -18,6 +18,7 @@ public class Window extends PApplet {
     ArrayList<Star> stars;
     ArrayList<Pixel> pixels;
     ArrayList<Laser> lasers;
+    StarsStraght[] menuStars = new StarsStraght[800];
     IntList astRemove;
     IntList laserRemove;
     IntList pixelRemove;
@@ -28,6 +29,7 @@ public class Window extends PApplet {
     int roundTitleCounter;
     boolean notRoundOne;
     boolean send = false;
+    float speed;
     String msg = "";
     String name = "";
 
@@ -61,6 +63,10 @@ public class Window extends PApplet {
             stars.add(new Star(this));
         }
 
+        for (int i = 0; i < menuStars.length; i++){
+            menuStars[i] = new StarsStraght(this);
+        }
+
         TextBox message = new TextBox(0, 0, width, height);
         textboxes.add(message);
 
@@ -77,18 +83,25 @@ public class Window extends PApplet {
     }
 
     public void settings() {
-        size(700, 700);
+        size(800, 800);
     }
 
     public void draw() {
         switch (gameState) {
             case 0 -> {
                 push();
+                speed = map(mouseX, 0, width, 0, 20);
                 background(0);
-                for (Star s : stars){
-                    s.display(this);
-                    PVector dir = new PVector(2, 0);
-                    s.move(dir, this);
+//                for (Star s : stars){
+//                    s.display(this);
+//                    PVector dir = new PVector(2, 0);
+//                    s.move(dir, this);
+//                }
+
+                translate(width/2, height/2);
+                for (int i = 0; i < menuStars.length; i++){
+                    menuStars[i].update(this);
+                    menuStars[i].show(this);
                 }
                 for(TextBox t : textboxes){
                     t.draw(this);
@@ -100,8 +113,8 @@ public class Window extends PApplet {
 
                 textSize(32);
                 fill(255);
-                shape(bot, 200, 150);
-                text("Press Enter", width * .38f, height * .7f);
+                //shape(bot, 200, 150);
+                text("Press Enter", width * -.095f, height * .15f);
                 pop();
                 break;
             }
