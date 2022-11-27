@@ -99,12 +99,10 @@ public class Window extends PApplet {
 //                }
 
                 translate(width/2, height/2);
-
                 for (int i = 0; i < menuStars.length; i++){
                     menuStars[i].update(this);
                     menuStars[i].show(this);
                 }
-
                 for(TextBox t : textboxes){
                     t.draw(this);
                 }
@@ -154,7 +152,7 @@ public class Window extends PApplet {
     void RoundUpdate(){
         if(roundTitleCounter > 0)roundTitleCounter--;//If there is any timer subtract the timer
         else {
-            roundTitleCounter = 2;
+            roundTitleCounter = 0;
             notRoundOne = true;
         }
 
@@ -273,7 +271,7 @@ public class Window extends PApplet {
                 if (keyCode == 32) {
                     if (!player.shotFired) {
                         lasers.add(player.Fire(this));
-                        if(round > 5){
+                        if(round > 4){
                             lasers.add(player.Fire2(this));
                         }
                         player.shotFired = true;

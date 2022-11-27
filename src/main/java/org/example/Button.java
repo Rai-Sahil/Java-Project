@@ -18,11 +18,11 @@ public class Button {
 
         w.stroke(255);
         w.strokeWeight(2);
-       w.rect(rectX, rectY, rectSize, rectSize);
+        w.rect(rectX, rectY, rectSize, rectSize);
     }
 
     public void update(Window w) {
-       if (overRect(rectX, rectY, w) ) {
+        if (overRect(rectX, rectY, w) ) {
             rectOver = true;
         } else {
             rectOver = false;

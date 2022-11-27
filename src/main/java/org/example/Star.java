@@ -21,8 +21,8 @@ public class Star{
     }
 
     public void display(Window window){
-       window.stroke(this.colour, this.colour, this.colour, this.colour);
-       window.strokeWeight(this.size);
+        window.stroke(this.colour, this.colour, this.colour, this.colour);
+        window.strokeWeight(this.size);
         window.point(this.pos.x, this.pos.y);
     }
 
