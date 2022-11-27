@@ -13,6 +13,7 @@ public class Window extends PApplet {
     PShape bot;
     PImage gameOver;
     Player player;
+    ArrayList<TextBox> textboxes;
     ArrayList<Asteroid> asteroids;
     ArrayList<Star> stars;
     ArrayList<Pixel> pixels;
@@ -26,6 +27,9 @@ public class Window extends PApplet {
     int round; //Levels
     int roundTitleCounter;
     boolean notRoundOne;
+    boolean send = false;
+    String msg = "";
+    String name = "";
 
     public static void main(String[] args) {
         String[] appletArgs = new String[]{"Spacesaver"};
@@ -47,6 +51,7 @@ public class Window extends PApplet {
         player = new Player(this);
         asteroids = new ArrayList<Asteroid>();
         stars = new ArrayList<Star>();
+        textboxes = new ArrayList<TextBox>();
 
         for (int i = 0; i < floor(random(6, 10)); i++) {
             asteroids.add(new Asteroid(this));
@@ -55,6 +60,9 @@ public class Window extends PApplet {
         for (int i = 0; i < 100; i++){
             stars.add(new Star(this));
         }
+
+        TextBox message = new TextBox(0, 0, width, height);
+        textboxes.add(message);
 
         lasers = new ArrayList<Laser>();
         pixels = new ArrayList<>();
@@ -82,6 +90,14 @@ public class Window extends PApplet {
                     PVector dir = new PVector(2, 0);
                     s.move(dir, this);
                 }
+                for(TextBox t : textboxes){
+                    t.draw(this);
+                }
+
+                if(send){
+                    text(msg, (width - textWidth(msg)) / 2, 260);
+                }
+
                 textSize(32);
                 fill(255);
                 shape(bot, 200, 150);
@@ -153,6 +169,7 @@ public class Window extends PApplet {
         push();
         textSize(32);
         text("Score: " + score, width*.05f, height*.05f);
+        text("Name: " + name, width*.75f, height*.05f);
         pop();
         player.Render(this);
         for (Asteroid asteroid : asteroids) {
@@ -222,6 +239,13 @@ public class Window extends PApplet {
     public void keyPressed() {
         switch (gameState) {
             case 0 -> {
+                for (TextBox t : textboxes) {
+                    if (t.keyPressed(key, keyCode, this)) {
+                        send = true;
+                        msg = "Message is: " + textboxes.get(0).Text;
+                        name = textboxes.get(0).Text;
+                    }
+                }
                 if (keyCode == 10) gameState = 1;
                 break;
             }
@@ -234,6 +258,7 @@ public class Window extends PApplet {
                 if (keyCode == 32) {
                     if (!player.shotFired) {
                         lasers.add(player.Fire(this));
+                        lasers.add(player.Fire2(this));
                         player.shotFired = true;
                     }
                 }
@@ -268,6 +293,12 @@ public class Window extends PApplet {
 
                 break;
             }
+        }
+    }
+
+    public void mousePressed() {
+        for (TextBox t : textboxes) {
+            t.PRESSED(mouseX, mouseY);
         }
     }
 }

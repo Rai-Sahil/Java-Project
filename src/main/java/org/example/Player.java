@@ -27,6 +27,11 @@ public class Player{
         return beam;
     }
 
+    public Laser Fire2(Window window){
+        Laser beam = new Laser(posX+30, posY+30, rotation, window);
+        return beam;
+    }
+
     public void Update(){
         if(isRotating == -1){// LEFT
             rotation = rotation + MAXSPEED;
