@@ -4,9 +4,9 @@ import org.example.Window;
 
 public class TextBox {
 
-    public int textSize = 24;
+    public int textSize = 32;
     public int X = 0, Y = 0, H = 35, W = 200;
-    public boolean BorderEnable = false;
+    public boolean BorderEnable = true;
     private boolean selected = true;
     public int TextLength = 0;
     public String Text = "";
@@ -26,13 +26,10 @@ public class TextBox {
         } else{
             //w.background(140, 140, 140);
         }
+//        w.strokeWeight(3);
+//        w.stroke(30, 30, 30);
+        w.noStroke();
 
-        if(BorderEnable){
-            w.strokeWeight(1);
-            w.stroke(30, 30, 30);
-        } else{
-            w.noStroke();
-        }
         w.noFill();
         w.rect(X, Y, W, H);
         w.textSize(textSize);

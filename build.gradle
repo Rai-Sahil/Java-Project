@@ -14,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.mongodb:mongodb-driver-reactivestreams:4.8.0'
     implementation fileTree(dir: 'library', include: ['*.jar'])
     implementation 'puppetlabs:comidi:1.0.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'

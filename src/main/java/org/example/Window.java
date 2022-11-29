@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Window extends PApplet {
 
-    PShape bot;
+    PImage bot;
     PImage gameOver;
     Player player;
     ArrayList<TextBox> textboxes;
@@ -33,18 +33,12 @@ public class Window extends PApplet {
     String msg = "";
     String name = "";
 
-    public static void main(String[] args) {
-        String[] appletArgs = new String[]{"Spacesaver"};
-        Window window = new Window();
-        PApplet.runSketch(appletArgs, window);
-    }
-
     public void setup() {
         background(0);
         frameRate(60);
         InstantiateVariables();//This gets call whenever we restart the game...
         gameState = 0;
-        bot = loadShape("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\org\\example\\rocket-3432.svg");
+        bot = loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\org\\example\\1335908-middle-removebg-preview.png");
         gameOver = loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\Game-Over-PNG-Image.png");
     }
 
@@ -67,7 +61,7 @@ public class Window extends PApplet {
             menuStars[i] = new StarsStraght(this);
         }
 
-        TextBox message = new TextBox(0, 0, width, height);
+        TextBox message = new TextBox(0, 110, width, height);
         textboxes.add(message);
 
         lasers = new ArrayList<Laser>();
@@ -92,6 +86,7 @@ public class Window extends PApplet {
                 push();
                 speed = map(mouseX, 0, width, 0, 20);
                 background(0);
+
 //                for (Star s : stars){
 //                    s.display(this);
 //                    PVector dir = new PVector(2, 0);
@@ -113,8 +108,9 @@ public class Window extends PApplet {
 
                 textSize(32);
                 fill(255);
-                //shape(bot, 200, 150);
-                text("Press Enter", width * -.095f, height * .15f);
+                image(bot, -width/3, -height/3);
+                text("Enter Your Name: ", width * -.30f, height * .177f);
+                text("Press Enter", width * -.095f, height * .30f);
                 pop();
                 break;
             }
@@ -128,6 +124,7 @@ public class Window extends PApplet {
                     s.move(dir, this);
                 }
                 result = score;
+                System.out.println(result);
                 break;
             }
             case 2 -> {
