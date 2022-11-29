@@ -22,12 +22,22 @@ public class Player{
         shotFired = false;
     }
 
-    public Laser Fire(Window window){
+  /** Regular lasers fired at rounds < 5.
+   *
+   * @param window window for the user
+   * @return laser beam when fired from player.
+   */
+  public Laser Fire(Window window){
         Laser beam = new Laser(posX, posY, rotation, window);
         return beam;
     }
 
-    public Laser Fire2(Window window){
+  /** Double lasers fired at rounds > 5.
+   *
+   * @param window window for the user
+   * @return laser beam when fired from the player
+   */
+  public Laser Fire2(Window window){
         Laser beam = new Laser(posX+30, posY+30, rotation, window);
         return beam;
     }
@@ -51,6 +61,9 @@ public class Player{
         window.pop();
     }
 
+  /** Checks collision between an asteroid object and the window,
+   *  Hit box is made larger to make it easier for laser impact.
+   */
     public boolean CheckCollision(Asteroid a, Window window){
         float d = window.dist(posX, posY, a.posX, a.posY);
 
