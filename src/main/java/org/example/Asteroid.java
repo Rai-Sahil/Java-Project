@@ -38,7 +38,11 @@ public class Asteroid {
         Edge(window);
     }
 
-    public void Render(Window window){
+  /** Renders in the asteroids images, there are 2 asteroid images to load from.
+   *
+   * @param window window for the user
+   */
+  public void Render(Window window){
         window.push();
         window.translate(posX, posY);
         window.noFill();

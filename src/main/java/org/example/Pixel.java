@@ -8,6 +8,12 @@ public class Pixel {
     float speed;
     float life;
 
+  /**
+   * Constructor for the Pixel class.
+   * @param x x-coordinate position
+   * @param y y-coordinate position
+   * @param window window for the user
+   */
     Pixel(float x, float y, Window window){
         posX = x;
         posY =  y;
@@ -17,7 +23,12 @@ public class Pixel {
         size = window.random(2, 5);
     }
 
-    public boolean Update(Window window){
+  /**
+   * Updates the speed and direction of the position of Pixels once an asteroid is destroyed.
+   * @param window window for the user
+   * @return true if the pixel life is less than 1, false otherwise
+   */
+  public boolean Update(Window window){
         posX += speed * window.cos(direction);
         posY += speed * window.sin(direction);
         life--;
@@ -25,7 +36,11 @@ public class Pixel {
         else return false;
     }
 
-    public void Render(Window window){
+  /**
+   * Renders pixels on screen.
+   * @param window window for the user
+   */
+  public void Render(Window window){
         window.push();
         if(life > 0){
             window.fill(255, 255, 255, life);
