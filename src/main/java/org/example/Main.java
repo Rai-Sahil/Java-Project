@@ -24,7 +24,7 @@ public class Main {
     Window window = new Window();
     PApplet.runSketch(appletArgs, window);
 
-    // you can use these credentials until there are any overwrite conflicts, then talk to Paul
+    // As long as there are no overwrite conflicts, you can use these credentials.
     ConnectionString connectionString = new ConnectionString("mongodb+srv://COMP2522:Tuesday29@cluster0.rnpqryh.mongodb.net/?retryWrites=true&w=majority");
     // settings for connecting to MongoDB
     MongoClientSettings settings = MongoClientSettings.builder()

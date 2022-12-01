@@ -14,7 +14,7 @@ public class Asteroid {
     float randomDir;
     float speed;
 
-  /** Sets asteroids in a random direction, in a random position at a set speed.
+  /** Asteroid constructor class.
    *
    * @param window window for the user
    */
