@@ -10,7 +10,14 @@ public class Laser {
     float dir;
     float size;
 
-    Laser(float px, float py, float pDir, Window window){
+  /**
+   * Constructor for Laser class.
+   * @param px position x
+   * @param py position y
+   * @param pDir position of direction
+   * @param window window for the user
+   */
+  Laser(float px, float py, float pDir, Window window){
         posX = px;
         posY = py;
         speed = 5;

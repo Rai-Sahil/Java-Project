@@ -85,7 +85,13 @@ public class Window extends PApplet {
         size(800, 800);
     }
 
-    public void draw() {
+  /**
+   * Draws objects needed for each gameState. gameState 0 draws in the stars flying in the background along with
+   * a TextBox to enter the users name and a spaceship image. gameState 1 draws in objects that need to be rendered
+   * like the player and asteroids amongst stars in the background with the score printed. gameState 2 draws in
+   * stars for the background again a TextBox, and a game over image.
+   */
+  public void draw() {
         switch (gameState) {
             case 0 -> {
                 push();
@@ -176,7 +182,8 @@ public class Window extends PApplet {
     }
 
   /**
-   * Render for objects asteroid, pixels, lasers, and round/score counter.
+   * Render for objects player, asteroid, pixels, lasers, and round/score counter and shows
+   * the Score and name of the player.
    */
     public void Render() {
         background(0);
@@ -269,7 +276,13 @@ public class Window extends PApplet {
         pixelRemove.clear();
     }
 
-    public void keyPressed() {
+  /**
+   * Checks the keycodes pressed for each game state, in gamestate 0 in the menu screen it checks for
+   * the TextBox, in gamestate 1, it checks for player rotation and laser fire from the player, in
+   * gamestate 3, in gamestate 2, the end of the game, if the user presses "enter" (keycode 10) the game
+   * resets and instantiates all variables needed for the setup.
+   */
+  public void keyPressed() {
         switch (gameState) {
             case 0 -> {
                 for (TextBox t : textboxes) {
@@ -308,7 +321,8 @@ public class Window extends PApplet {
     }
 
   /**
-   *
+   * Checks once the key is no longer being pressed, if left or right key is released,
+   * rotation for the player is stopped.
    */
   public void keyReleased() {
         switch (gameState) {
@@ -335,7 +349,7 @@ public class Window extends PApplet {
     }
 
   /**
-   *
+   * Allows you to click your mouse within the TextBox.
    */
   public void mousePressed() {
         for (TextBox t : textboxes) {

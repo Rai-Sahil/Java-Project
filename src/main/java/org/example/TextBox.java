@@ -16,11 +16,22 @@ public class TextBox {
 
     }
 
+  /**
+   * Constructor for the TextBox class.
+   * @param x x-coordinate used for a rectangle
+   * @param y y-coordinate used for a rectangle
+   * @param w width used for a rectangle
+   * @param h height used for a rectangle
+   */
     TextBox(int x, int y, int w, int h) {
         X = x; Y = y; W = w; H = h;
     }
 
-    void draw(Window w){
+  /**
+   * Draws the rectangle for the TextBox when the game starts.
+   * @param w window for the user
+   */
+  void draw(Window w){
         if(selected){
             //w.background(160, 160, 160);
         } else{
@@ -36,6 +47,14 @@ public class TextBox {
         w.text(Text, X + (w.textWidth("a") / 2), Y + textSize);
     }
 
+  /**
+   * Function to map keycodes to buttons for the textbox.
+   * @param key checks which key was pressed
+   * @param keyCode global variables that represents the last key pressed
+   * @param w window for the user
+   * @return true if the correct keycodes are pressed, 8 for backspace,
+   * 10 is for enter key, and 32 for space. Returns false otherwise
+   */
     boolean keyPressed(char key, int keyCode, Window w) {
         if (selected) {
             if (keyCode == 8) {
@@ -58,7 +77,13 @@ public class TextBox {
         return false;
     }
 
-    private void addText(char text, Window w) {
+  /**
+   * Adds text into the TextBox when the user inputs it, increases the size of the
+   * TextBox as long as the text is within the limit of the TextBox width.
+   * @param text characters entered
+   * @param w window for the user
+   */
+  private void addText(char text, Window w) {
         // IF THE TEXT WIDTH IS IN BOUNDARIES OF THE TEXTBOX
         if (w.textWidth(Text + text) < W) {
             Text += text;
@@ -66,13 +91,22 @@ public class TextBox {
         }
     }
 
-    private void BACKSPACE() {
+  /**
+   * Used to delete characters in the TextBox.
+   */
+  private void BACKSPACE() {
         if (TextLength - 1 >= 0) {
             Text = Text.substring(0, TextLength - 1);
             TextLength--;
         }
     }
 
+  /**
+   * Checks if characters entered exceeds the limit of the TextBox.
+   * @param x x-coordinate used for the rectangle of the TextBox
+   * @param y y-coordinate used for the rectangle of the TextBox
+   * @return true if the text exceeds the TextBox, false otherwise
+   */
     private boolean overBox(int x, int y) {
         if (x >= X && x <= X + W) {
             if (y >= Y && y <= Y + H) {
