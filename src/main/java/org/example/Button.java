@@ -15,7 +15,6 @@ public class Button {
 
     public void draw(Window w) {
         update(w);
-
         w.stroke(255);
         w.strokeWeight(2);
         w.rect(rectX, rectY, rectSize, rectSize);
