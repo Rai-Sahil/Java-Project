@@ -11,6 +11,7 @@ class TextBoxTest {
   Window window;
 
   int keyCode;
+  char key;
 
   boolean isKeyCapitalLetter = true;
   boolean isKeySmallLetter = true;
@@ -77,10 +78,19 @@ class TextBoxTest {
       }
     }
 
-    @Test
-    void checkIsKeyCapital(){
-
+  @Test
+  void checkIsKeyCapital(){
+    if (key >= 'A' && key <= 'Z'){
+      assertTrue(isKeyCapitalLetter);
     }
+  }
+
+  @Test
+  void checkIsKeyLowerCase(){
+    if (key >= 'a' && key <= 'z'){
+      assertTrue(isKeySmallLetter);
+    }
+  }
 
     @Test
     void testPRESSED() {
