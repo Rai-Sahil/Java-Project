@@ -26,7 +26,7 @@ public class Main {
 
 //    mongodb+srv://COMP2522:Tuesday29@cluster0.rnpqryh.mongodb.net/?retryWrites=true&w=majority
     // you can use these credentials until there are any overwrite conflicts, then talk to Paul
-    ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
+    ConnectionString connectionString = new ConnectionString("mongodb+srv://COMP2522:Tuesday29@cluster0.rnpqryh.mongodb.net/?retryWrites=true&w=majority");
     // settings for connecting to MongoDB
     MongoClientSettings settings = MongoClientSettings.builder()
             .applyConnectionString(connectionString)
