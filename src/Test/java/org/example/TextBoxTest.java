@@ -16,6 +16,7 @@ class TextBoxTest {
   boolean isKeyCapitalLetter = true;
   boolean isKeySmallLetter = true;
   boolean isKeyNumber = true;
+  boolean isTextDeleted = true;
 
   public int textSize = 32;
   public int X = 0, Y = 0, H = 35, W = 200;
@@ -125,6 +126,24 @@ class TextBoxTest {
   void checkIsKeyInRange(){
       if (key >= 1 && key <=9){
         assertNotEquals(10, 1);
+      }
+  }
+
+  @Test
+  void checkIfTextDeleted(){
+      if (TextLength - 1 >= 0){
+        Text = Text.substring(0, TextLength - 1);
+        assertTrue(isTextDeleted);
+      }
+  }
+
+  @Test
+  void checkIfTextNotDeleted(){
+      if (TextLength - 1 >= 0){
+        Text = Text.substring(0, TextLength - 1);
+        isTextDeleted = false;
+        assertFalse(isTextDeleted);
+
       }
   }
 
