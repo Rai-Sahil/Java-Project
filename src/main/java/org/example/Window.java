@@ -33,22 +33,23 @@ public class Window extends PApplet {
     String msg = "";
     String name = "";
 
-  /** Setup is called everytime we open the game, gamestate is set to 0
-   * so our game stays in the start menu.
-   */
-  public void setup() {
+    /**
+     * Setup is called everytime we open the game, gamestate is set to 0
+     * so our game stays in the start menu.
+     */
+    public void setup() {
         background(0);
         frameRate(60);
         InstantiateVariables();//This gets call whenever we restart the game...
         gameState = 0;
-        bot = loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\org\\example\\1335908-middle-removebg-preview.png");
+        bot = loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\Resourses\\1335908-middle-removebg-preview.png");
         gameOver = loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\Game-Over-PNG-Image.png");
     }
 
-  /**
-   * Used for setup of our game when we run it.
-   */
-    void InstantiateVariables(){
+    /**
+     * Used for setup of our game when we run it.
+     */
+    void InstantiateVariables() {
         player = new Player(this);
         asteroids = new ArrayList<Asteroid>();
         stars = new ArrayList<Star>();
@@ -58,11 +59,11 @@ public class Window extends PApplet {
             asteroids.add(new Asteroid(this));
         }
 
-        for (int i = 0; i < 100; i++){
+        for (int i = 0; i < 100; i++) {
             stars.add(new Star(this));
         }
 
-        for (int i = 0; i < menuStars.length; i++){
+        for (int i = 0; i < menuStars.length; i++) {
             menuStars[i] = new StarsStraght(this);
         }
 
@@ -85,41 +86,34 @@ public class Window extends PApplet {
         size(800, 800);
     }
 
-  /**
-   * Draws objects needed for each gameState. gameState 0 draws in the stars flying in the background along with
-   * a TextBox to enter the users name and a spaceship image. gameState 1 draws in objects that need to be rendered
-   * like the player and asteroids amongst stars in the background with the score printed. gameState 2 draws in
-   * stars for the background again a TextBox, and a game over image.
-   */
-  public void draw() {
+    /**
+     * Draws objects needed for each gameState. gameState 0 draws in the stars flying in the background along with
+     * a TextBox to enter the users name and a spaceship image. gameState 1 draws in objects that need to be rendered
+     * like the player and asteroids amongst stars in the background with the score printed. gameState 2 draws in
+     * stars for the background again a TextBox, and a game over image.
+     */
+    public void draw() {
         switch (gameState) {
             case 0 -> {
                 push();
                 speed = map(mouseX, 0, width, 0, 20);
                 background(0);
-
-//                for (Star s : stars){
-//                    s.display(this);
-//                    PVector dir = new PVector(2, 0);
-//                    s.move(dir, this);
-//                }
-
-                translate(width/2, height/2);
-                for (int i = 0; i < menuStars.length; i++){
+                translate(width / 2, height / 2);
+                for (int i = 0; i < menuStars.length; i++) {
                     menuStars[i].update(this);
                     menuStars[i].show(this);
                 }
-                for(TextBox t : textboxes){
+                for (TextBox t : textboxes) {
                     t.draw(this);
                 }
 
-                if(send){
+                if (send) {
                     text(msg, (width - textWidth(msg)) / 2, 260);
                 }
 
                 textSize(32);
                 fill(255);
-                image(bot, -width/3, -height/3);
+                image(bot, -width / 3, -height / 3);
                 text("Enter Your Name: ", width * -.30f, height * .177f);
                 text("Press Enter", width * -.095f, height * .30f);
                 pop();
@@ -129,7 +123,7 @@ public class Window extends PApplet {
                 RoundUpdate();
                 Update();
                 Render();
-                for (Star s : stars){
+                for (Star s : stars) {
                     s.display(this);
                     PVector dir = new PVector(2, 0);
                     s.move(dir, this);
@@ -141,14 +135,13 @@ public class Window extends PApplet {
             case 2 -> {
                 push();
                 background(0);
-                for (Star s : stars){
+                for (Star s : stars) {
                     s.display(this);
                     PVector dir = new PVector(2, 0);
                     s.move(dir, this);
                 }
                 textSize(32);
                 image(gameOver, width * .38f, height * .1f, 200, 200);
-//                text("Game Over", width*.39f, height*.26f);
                 text("You Scored: " + result, width * .35f, height * .5f);
                 text("Press Enter to Play Again", width * .24f, height * .8f);
                 pop();
@@ -157,48 +150,48 @@ public class Window extends PApplet {
         }
     }
 
-  /**
-   * Once the first round is about to finish, the window is repopulated with 5-8 asteroids
-   * into the window for round2.
-   */
-    void RoundUpdate(){
-        if(roundTitleCounter > 0)roundTitleCounter--;//If there is any timer subtract the timer
+    /**
+     * Once the first round is about to finish, the window is repopulated with 5-8 asteroids
+     * into the window for round2.
+     */
+    void RoundUpdate() {
+        if (roundTitleCounter > 0) roundTitleCounter--;//If there is any timer subtract the timer
         else {
             roundTitleCounter = 0;
             notRoundOne = true;
         }
 
         //ABout to finish a round but not in first round...
-        if (roundTitleCounter == 1 && notRoundOne){
-            for(int i = 0; i < floor(random(5, 8)); i++){
+        if (roundTitleCounter == 1 && notRoundOne) {
+            for (int i = 0; i < floor(random(5, 8)); i++) {
                 asteroids.add(new Asteroid(this));
             }
         }
 
-        if(roundTitleCounter == 0 && asteroids.size() == 0){
+        if (roundTitleCounter == 0 && asteroids.size() == 0) {
             roundTitleCounter = 180;
             round++;
         }
     }
 
-  /**
-   * Render for objects player, asteroid, pixels, lasers, and round/score counter and shows
-   * the Score and name of the player.
-   */
+    /**
+     * Render for objects player, asteroid, pixels, lasers, and round/score counter and shows
+     * the Score and name of the player.
+     */
     public void Render() {
         background(0);
 
-        if(roundTitleCounter > 0){
+        if (roundTitleCounter > 0) {
             push();
             textSize(32);
-            text("Round " + round, width*.4f, height*.4f);
+            text("Round " + round, width * .4f, height * .4f);
             pop();
         }
 
         push();
         textSize(32);
-        text("Score: " + score, width*.05f, height*.05f);
-        text("Name: " + name, width*.75f, height*.05f);
+        text("Score: " + score, width * .05f, height * .05f);
+        text("Name: " + name, width * .75f, height * .05f);
         pop();
         player.Render(this);
         for (Asteroid asteroid : asteroids) {
@@ -214,23 +207,23 @@ public class Window extends PApplet {
         }
     }
 
-    public void death(int value){
+    public void death(int value) {
 
     }
 
-  /**
-   * Updates each object as needed.
-   * Player updates once a collision with asteroid takes place, updates gamestate to 2 (game over).
-   * Checks collision between an asteroid object and the laser,
-   * Hit box is made larger to make it easier for laser impact using the CheckCollision function in Laser class.
-   * Laser gets removed and so does the asteroid. Upon collision a pixel takes the place of the
-   * x and y position of where the asteroid was by getting the position of x and y.
-   */
+    /**
+     * Updates each object as needed.
+     * Player updates once a collision with asteroid takes place, updates gamestate to 2 (game over).
+     * Checks collision between an asteroid object and the laser,
+     * Hit box is made larger to make it easier for laser impact using the CheckCollision function in Laser class.
+     * Laser gets removed and so does the asteroid. Upon collision a pixel takes the place of the
+     * x and y position of where the asteroid was by getting the position of x and y.
+     */
     public void Update() {
         player.Update();
         for (Asteroid asteroid : asteroids) {
             asteroid.Update(this);
-            if (player.CheckCollision(asteroid, this)){
+            if (player.CheckCollision(asteroid, this)) {
                 gameState = 2;
             }
         }
@@ -276,13 +269,13 @@ public class Window extends PApplet {
         pixelRemove.clear();
     }
 
-  /**
-   * Checks the keycodes pressed for each game state, in gamestate 0 in the menu screen it checks for
-   * the TextBox, in gamestate 1, it checks for player rotation and laser fire from the player, in
-   * gamestate 3, in gamestate 2, the end of the game, if the user presses "enter" (keycode 10) the game
-   * resets and instantiates all variables needed for the setup.
-   */
-  public void keyPressed() {
+    /**
+     * Checks the keycodes pressed for each game state, in gamestate 0 in the menu screen it checks for
+     * the TextBox, in gamestate 1, it checks for player rotation and laser fire from the player, in
+     * gamestate 3, in gamestate 2, the end of the game, if the user presses "enter" (keycode 10) the game
+     * resets and instantiates all variables needed for the setup.
+     */
+    public void keyPressed() {
         switch (gameState) {
             case 0 -> {
                 for (TextBox t : textboxes) {
@@ -304,7 +297,7 @@ public class Window extends PApplet {
                 if (keyCode == 32) {
                     if (!player.shotFired) {
                         lasers.add(player.Fire(this));
-                        if(round > 4){
+                        if (round > 4) {
                             lasers.add(player.Fire2(this));
                         }
                         player.shotFired = true;
@@ -320,11 +313,11 @@ public class Window extends PApplet {
         }
     }
 
-  /**
-   * Checks once the key is no longer being pressed, if left or right key is released,
-   * rotation for the player is stopped.
-   */
-  public void keyReleased() {
+    /**
+     * Checks once the key is no longer being pressed, if left or right key is released,
+     * rotation for the player is stopped.
+     */
+    public void keyReleased() {
         switch (gameState) {
             case 0 -> {
 
@@ -348,27 +341,28 @@ public class Window extends PApplet {
         }
     }
 
-  /**
-   * Allows you to click your mouse within the TextBox.
-   */
-  public void mousePressed() {
+    /**
+     * Allows you to click your mouse within the TextBox.
+     */
+    public void mousePressed() {
         for (TextBox t : textboxes) {
             t.PRESSED(mouseX, mouseY);
         }
     }
 
-  /**
-   * Test method for checking the window size.
-   * @param window window for the user
-   * @return true if width and height match in test class
-   */
-  public boolean checkWindowSize(Window window){
-    if ((window.height == 360)
-        && (window.width == 640)){
-      return true;
-    } else {
-      return false;
+    /**
+     * Test method for checking the window size.
+     *
+     * @param window window for the user
+     * @return true if width and height match in test class
+     */
+    public boolean checkWindowSize(Window window) {
+        if ((window.height == 360)
+                && (window.width == 640)) {
+            return true;
+        } else {
+            return false;
+        }
     }
-  }
 }
 
