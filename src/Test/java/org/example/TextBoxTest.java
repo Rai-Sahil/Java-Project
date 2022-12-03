@@ -17,6 +17,7 @@ class TextBoxTest {
   boolean isKeySmallLetter = true;
   boolean isKeyNumber = true;
   boolean isTextDeleted = true;
+  boolean textFits = true;
 
   public int textSize = 32;
   public int X = 0, Y = 0, H = 35, W = 200;
@@ -144,6 +145,13 @@ class TextBoxTest {
         isTextDeleted = false;
         assertFalse(isTextDeleted);
 
+      }
+  }
+
+  @Test
+  void textSizeFits(){
+      if (textSize < TextLength){
+        assertTrue(textFits);
       }
   }
 

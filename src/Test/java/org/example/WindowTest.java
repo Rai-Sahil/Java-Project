@@ -15,6 +15,8 @@ class WindowTest {
 
   Player player;
 
+  int keyCode;
+
   PImage bot;
   PImage gameOver;
   ArrayList<TextBox> textboxes;
@@ -51,6 +53,94 @@ class WindowTest {
 
     window.setSize(640, 360);
     assertTrue(window.checkWindowSize(window));
+  }
+
+  @Test
+  void checkGameState(){
+    if (keyCode == 10){
+      gameState = 1;
+      assertEquals(1, gameState);
+    }
+  }
+
+  @Test
+  void checkGameStateTest2(){
+    if (keyCode == 10){
+      gameState = 2;
+      assertNotEquals(1, gameState);
+    }
+  }
+
+  @Test
+  void checkKeyCodeRight(){
+    if (keyCode == 39){
+      player.isRotating = -1;
+      assertEquals(-1, player.isRotating);
+    }
+  }
+
+  @Test
+  void checkKeyCodeRight2(){
+    if (keyCode == 39){
+      player.isRotating = -1;
+      assertNotEquals(1, player.isRotating);
+    }
+  }
+
+  @Test
+  void checkKeyCodeLeft(){
+    if (keyCode == 37){
+      player.isRotating = 1;
+      assertEquals(1, player.isRotating);
+    }
+  }
+
+  @Test
+  void checkKeyCodeLeft2(){
+    if (keyCode == 37){
+      player.isRotating = 1;
+      assertNotEquals(-1, player.isRotating);
+    }
+  }
+
+  @Test
+  void checkKeyCode32(){
+    if (keyCode == 32){
+      player.shotFired = true;
+      assertTrue(player.shotFired);
+    }
+  }
+
+  @Test
+  void checkPlayerNotRotatingRight(){
+    if (keyCode == 39){
+      player.isRotating = 0;
+      assertEquals(0, player.isRotating);
+    }
+  }
+
+  @Test
+  void checkPlayerNotRotatingRight2(){
+    if (keyCode == 39){
+      player.isRotating = 0;
+      assertNotEquals(-1,player.isRotating);
+    }
+  }
+
+  @Test
+  void checkPlayerNotRotatingLeft(){
+    if (keyCode == 37){
+      player.isRotating = 0;
+      assertEquals(0, player.isRotating);
+    }
+  }
+
+  @Test
+  void checkPlayerNotRotatingLeft2(){
+    if (keyCode == 37){
+      player.isRotating = 0;
+      assertNotEquals(1, player.isRotating);
+    }
   }
 
 }
