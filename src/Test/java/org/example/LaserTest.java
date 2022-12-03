@@ -1,0 +1,80 @@
+//import static org.junit.jupiter.api.Assertions.*;
+//
+//import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.Test;
+//import processing.core.PVector;
+//
+//import org
+//
+//
+//class LaserTest {
+//    laser foodCharacter;
+//    Window window;
+//
+//    /**
+//     * Before any code listed below run this.
+//     */
+//    @BeforeEach
+//    void setUp() {
+//        window = new Window();
+//        PVector pos = new PVector(window.width / 2f, window.height / 2f);
+//        PVector dir = new PVector(0, 1).normalize();
+//        foodCharacter = new FoodCharacter(pos, dir, window);
+//    }
+//
+//    @Test
+//    void topLeftCornerTest() {
+//        // character is embedded in the wall
+//        foodCharacter.setPosition(new PVector(0, 0));
+//        assertTrue(foodCharacter.touchWall(window));
+//
+//        // character is exactly touching the wall on both sides
+//        foodCharacter.setPosition(
+//                new PVector(
+//                        0 + foodCharacter.getWidth(),
+//                        0 + foodCharacter.getHeight()
+//                )
+//        );
+//        assertTrue(foodCharacter.touchWall(window));
+//
+//        // character is just barely not touching the wall anywhere
+//        foodCharacter.setPosition(
+//                new PVector(
+//                        0.1f + foodCharacter.getWidth(),
+//                        0.1f + foodCharacter.getHeight()
+//                )
+//        );
+//        assertFalse(foodCharacter.touchWall(window));
+//    }
+//
+//    @Test
+//    void bottomRightCornerTest() {
+//        // character is embedded in the wall
+//        foodCharacter.setPosition(new PVector(window.width, window.height));
+//        assertTrue(foodCharacter.touchWall(window));
+//
+//        // character is exactly touching the wall on both sides
+//        foodCharacter.setPosition(
+//                new PVector(
+//                        window.width - foodCharacter.getWidth(),
+//                        window.height - foodCharacter.getHeight()
+//                )
+//        );
+//        assertTrue(foodCharacter.touchWall(window));
+//
+//        // character is just barely not touching the wall anywhere
+//        foodCharacter.setPosition(
+//                new PVector(
+//                        window.width - 0.1f - foodCharacter.getWidth(),
+//                        window.width - 0.1f - foodCharacter.getHeight()
+//                )
+//        );
+//        assertFalse(foodCharacter.touchWall(window));
+//    }
+//
+//    @Test
+//    void setWidthTest() {
+//        foodCharacter.setWidth(100f);
+//        assertEquals(100, foodCharacter.getWidth());
+//    }
+//}

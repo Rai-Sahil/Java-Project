@@ -12,6 +12,7 @@ public class Window extends PApplet {
 
     PImage bot;
     PImage gameOver;
+    Asteroid asteroid;
     Player player;
     ArrayList<TextBox> textboxes;
     ArrayList<Asteroid> asteroids;
@@ -38,16 +39,17 @@ public class Window extends PApplet {
         frameRate(60);
         InstantiateVariables();//This gets call whenever we restart the game...
         gameState = 0;
-        bot = loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\org\\example\\1335908-middle-removebg-preview.png");
+        bot = loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\Resourses\\1335908-middle-removebg-preview.png");
         gameOver = loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\Game-Over-PNG-Image.png");
     }
 
-    //Used for setup of our game when we are running it.
+    //Intantiate all the variables in setup
     void InstantiateVariables(){
         player = new Player(this);
         asteroids = new ArrayList<Asteroid>();
         stars = new ArrayList<Star>();
         textboxes = new ArrayList<TextBox>();
+        asteroid = new Asteroid(this);
 
         for (int i = 0; i < floor(random(6, 10)); i++) {
             asteroids.add(new Asteroid(this));
@@ -71,7 +73,7 @@ public class Window extends PApplet {
         pixelRemove = new IntList();
 
         score = 0;
-        round = 1;
+        round = 5;
         notRoundOne = false;
         roundTitleCounter = 180;
     }
@@ -86,13 +88,6 @@ public class Window extends PApplet {
                 push();
                 speed = map(mouseX, 0, width, 0, 20);
                 background(0);
-
-//                for (Star s : stars){
-//                    s.display(this);
-//                    PVector dir = new PVector(2, 0);
-//                    s.move(dir, this);
-//                }
-
                 translate(width/2, height/2);
                 for (int i = 0; i < menuStars.length; i++){
                     menuStars[i].update(this);
@@ -124,7 +119,6 @@ public class Window extends PApplet {
                     s.move(dir, this);
                 }
                 result = score;
-                System.out.println(result);
                 break;
             }
             case 2 -> {
@@ -137,7 +131,6 @@ public class Window extends PApplet {
                 }
                 textSize(32);
                 image(gameOver, width * .38f, height * .1f, 200, 200);
-//                text("Game Over", width*.39f, height*.26f);
                 text("You Scored: " + result, width * .35f, height * .5f);
                 text("Press Enter to Play Again", width * .24f, height * .8f);
                 pop();
@@ -195,10 +188,14 @@ public class Window extends PApplet {
         }
     }
 
-    public void death(int value){
-
-    }
-
+    /**
+     * Updates each object as needed.
+     * Player updates once a collision with asteroid takes place, updates gamestate to 2 (game over).
+     * Checks collision between an asteroid object and the laser,
+     * Hit box is made larger to make it easier for laser impact using the CheckCollision function in Laser class.
+     * Laser gets removed and so does the asteroid. Upon collision a pixel takes the place of the
+     * x and y position of where the asteroid was by getting the position of x and y.
+     */
     public void Update() {
         player.Update();
         for (Asteroid asteroid : asteroids) {
@@ -231,6 +228,8 @@ public class Window extends PApplet {
             }
         }
 
+        // The clear() method of List interface in Java is used to remove all the elements from the List container.
+        // This method does not delete the List container, instead it just removes all the elements from the List.
         //REMOVE
         for (int i = 0; i < laserRemove.size(); i++) {
             if (laserRemove.get(i) < lasers.size()) lasers.remove(laserRemove.get(i));

@@ -22,6 +22,7 @@ public class Player{
         shotFired = false;
     }
 
+    // Fire 2 laser when the round is above 5
     public Laser Fire(Window window){
         Laser beam = new Laser(posX, posY, rotation, window);
         return beam;
@@ -32,6 +33,9 @@ public class Player{
         return beam;
     }
 
+    /** Checks collision between an asteroid object and the laser,
+     *  Hit box is made larger to make it easier for laser impact.
+     */
     public void Update(){
         if(isRotating == -1){// LEFT
             rotation = rotation + MAXSPEED;

@@ -24,8 +24,9 @@ public class Main {
     Window window = new Window();
     PApplet.runSketch(appletArgs, window);
 
+//    mongodb+srv://COMP2522:Tuesday29@cluster0.rnpqryh.mongodb.net/?retryWrites=true&w=majority
     // you can use these credentials until there are any overwrite conflicts, then talk to Paul
-    ConnectionString connectionString = new ConnectionString("mongodb+srv://COMP2522:Tuesday29@cluster0.rnpqryh.mongodb.net/?retryWrites=true&w=majority");
+    ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
     // settings for connecting to MongoDB
     MongoClientSettings settings = MongoClientSettings.builder()
             .applyConnectionString(connectionString)
@@ -57,8 +58,6 @@ public class Main {
     collection.find(eq("name", window.name))
             // subscribe takes a class that defines the callback
             .first().subscribe(new SubscriberHelpers.PrintDocumentSubscriber());
-
-
 
   }
 }
