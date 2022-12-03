@@ -41,7 +41,7 @@ public class Window extends PApplet {
         frameRate(60);
         InstantiateVariables();//This gets call whenever we restart the game...
         gameState = 0;
-        bot = loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\Resourses\\1335908-middle-removebg-preview.png");
+        bot = loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\org\\example\\1335908-middle-removebg-preview.png");
         gameOver = loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\Game-Over-PNG-Image.png");
     }
 
@@ -98,6 +98,12 @@ public class Window extends PApplet {
                 speed = map(mouseX, 0, width, 0, 20);
                 background(0);
 
+//                for (Star s : stars){
+//                    s.display(this);
+//                    PVector dir = new PVector(2, 0);
+//                    s.move(dir, this);
+//                }
+
                 translate(width/2, height/2);
                 for (int i = 0; i < menuStars.length; i++){
                     menuStars[i].update(this);
@@ -129,6 +135,7 @@ public class Window extends PApplet {
                     s.move(dir, this);
                 }
                 result = score;
+                System.out.println(result);
                 break;
             }
             case 2 -> {
@@ -141,6 +148,7 @@ public class Window extends PApplet {
                 }
                 textSize(32);
                 image(gameOver, width * .38f, height * .1f, 200, 200);
+//                text("Game Over", width*.39f, height*.26f);
                 text("You Scored: " + result, width * .35f, height * .5f);
                 text("Press Enter to Play Again", width * .24f, height * .8f);
                 pop();
@@ -253,6 +261,7 @@ public class Window extends PApplet {
         // The clear() method is used to remove all the elements from the List container.
         // container isn't deleted, just emptied. Once Update() is called in gamestate 1 (new game start), we can
         // start a fresh game.
+        //REMOVE
         for (int i = 0; i < laserRemove.size(); i++) {
             if (laserRemove.get(i) < lasers.size()) lasers.remove(laserRemove.get(i));
         }
