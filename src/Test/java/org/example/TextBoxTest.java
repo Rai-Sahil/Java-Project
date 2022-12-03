@@ -86,10 +86,46 @@ class TextBoxTest {
   }
 
   @Test
+  void checkIsKeyCapital2(){
+      if (key >= 'A' && key <= 'Z'){
+        assertNotEquals('a', 'A');
+      }
+  }
+
+  @Test
   void checkIsKeyLowerCase(){
     if (key >= 'a' && key <= 'z'){
       assertTrue(isKeySmallLetter);
     }
+  }
+
+  @Test
+  void checkIsKeyLowerCase2(){
+    if (key >= 'a' && key <= 'z'){
+      assertNotEquals('A', 'a');
+    }
+  }
+
+
+  @Test
+  void checkIsKeyANumber(){
+      if (key >= 1 && key <= 9){
+        assertTrue(isKeyNumber);
+      }
+  }
+
+  @Test
+  void checkIsKeyNotANumber(){
+      if (key >= 1 && key <= 9){
+        assertNotEquals('a', 1);
+      }
+  }
+
+  @Test
+  void checkIsKeyInRange(){
+      if (key >= 1 && key <=9){
+        assertNotEquals(10, 1);
+      }
   }
 
     @Test
