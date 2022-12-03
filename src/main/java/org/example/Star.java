@@ -13,24 +13,34 @@ public class Star{
     float speed;
     int TOP_SPEED = 1;
 
-    Star(Window window){
+  /**
+   * Constructor for the Star class.
+   * @param window window for the user
+   */
+  Star(Window window){
         this.pos = new PVector(window.random(window.width), window.random(window.height));
         this.size = window.random(max_weight);
         this.speed = window.map(this.size, 0, max_weight, 1,TOP_SPEED);
         this.colour = (255 / max_weight) * this.size;
     }
 
-    /**
-     * Displays the Star object on screen, setting its colour and size in pixels using strokeWeight
-     * @param window
-     */
-    public void display(Window window){
+  /**
+   * Displays the stars in the background when the game is in play and when the game is over once the
+   * player has collided.
+   * @param window window for the user
+   */
+  public void display(Window window){
         window.stroke(this.colour, this.colour, this.colour, this.colour);
         window.strokeWeight(this.size);
         window.point(this.pos.x, this.pos.y);
     }
 
-    void move(PVector direction, Window window){
+  /**
+   * Moves the stars on the screen in the background as the game is in effect.
+   * @param direction direction for the stars to move
+   * @param window window for the user
+   */
+  void move(PVector direction, Window window){
         direction.mult(this.speed);
         this.pos.add(direction);
 

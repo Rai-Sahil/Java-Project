@@ -5,21 +5,21 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LaserTest {
+class TextBoxTest {
 
     @BeforeEach
     void setUp() {
     }
 
     @Test
-    void update() {
+    void testDraw() {
     }
 
     @Test
-    void render() {
+    void testKeyPressed() {
     }
 
     @Test
-    void checkCollision() {
+    void testPRESSED() {
     }
 }

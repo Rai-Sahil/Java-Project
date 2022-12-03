@@ -5,21 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LaserTest {
+class StarTest {
 
     @BeforeEach
     void setUp() {
     }
 
     @Test
-    void update() {
+    void display() {
     }
 
     @Test
-    void render() {
-    }
-
-    @Test
-    void checkCollision() {
+    void move() {
     }
 }
