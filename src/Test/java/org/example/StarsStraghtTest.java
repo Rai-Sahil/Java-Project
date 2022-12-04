@@ -5,7 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class StarsStraghtTest {
+
+  float x;
+  float y;
+  float z;
+  float pz;
+  public float speed;
 
     @BeforeEach
     void setUp() {

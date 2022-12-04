@@ -7,7 +7,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PixelTest {
 
-    @BeforeEach
+  float posX;
+  float posY;
+  float size;
+  float direction;
+  float speed;
+  float life;
+
+
+  @BeforeEach
     void setUp() {
     }
 

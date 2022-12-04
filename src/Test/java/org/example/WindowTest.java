@@ -39,6 +39,9 @@ class WindowTest {
   String msg = "";
   String name = "";
 
+  /**
+   * Sets up before each test begins.
+   */
   @BeforeEach
   void setup(){
     window = new Window();
@@ -46,6 +49,9 @@ class WindowTest {
   }
 
 
+  /**
+   * Checks the window size.
+   */
   @Test
   void checkWindowSize(){
     window.setSize(569, 789);
@@ -55,6 +61,9 @@ class WindowTest {
     assertTrue(window.checkWindowSize(window));
   }
 
+  /**
+   * Checks if the gameState is 1.
+   */
   @Test
   void checkGameState(){
     if (keyCode == 10){
@@ -63,6 +72,9 @@ class WindowTest {
     }
   }
 
+  /**
+   * Checks if the gameState is 2.
+   */
   @Test
   void checkGameStateTest2(){
     if (keyCode == 10){
@@ -71,6 +83,9 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the player is rotating right.
+   */
   @Test
   void checkKeyCodeRight(){
     if (keyCode == 39){
@@ -79,6 +94,10 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the player is rotating right and not left with the proper
+   * key code.
+   */
   @Test
   void checkKeyCodeRight2(){
     if (keyCode == 39){
@@ -87,6 +106,9 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the player is rotating left.
+   */
   @Test
   void checkKeyCodeLeft(){
     if (keyCode == 37){
@@ -95,6 +117,9 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests whether the keycode is mapped to the proper player rotation.
+   */
   @Test
   void checkKeyCodeLeft2(){
     if (keyCode == 37){
@@ -103,6 +128,9 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the keycode is mapped to the player button to fire lasers.
+   */
   @Test
   void checkKeyCode32(){
     if (keyCode == 32){
@@ -111,6 +139,9 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the player stops rotating right.
+   */
   @Test
   void checkPlayerNotRotatingRight(){
     if (keyCode == 39){
@@ -119,6 +150,10 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the player rotates left instead of stopping from
+   * right rotation.
+   */
   @Test
   void checkPlayerNotRotatingRight2(){
     if (keyCode == 39){
@@ -127,6 +162,9 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the player stops rotating from the left.
+   */
   @Test
   void checkPlayerNotRotatingLeft(){
     if (keyCode == 37){
@@ -135,6 +173,10 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the player rotates right instead of stopping from
+   * left rotation.
+   */
   @Test
   void checkPlayerNotRotatingLeft2(){
     if (keyCode == 37){
@@ -143,6 +185,9 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the roundTitleCounter is greater than 0.
+   */
   @Test
   void checkRoundUpdate(){
     if (roundTitleCounter > 0){
@@ -151,6 +196,9 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the roundTitleCounter is not 6.
+   */
   @Test
   void checkRoundUpdate2(){
     if (roundTitleCounter > 0){
@@ -159,12 +207,29 @@ class WindowTest {
     }
   }
 
+  /**
+   * Tests if the roundTitleCounter is not decrementing at 0.
+   */
+  @Test
+  void checkRoundUpdate3(){
+    if (roundTitleCounter > 0){
+      roundTitleCounter--;
+      assertNotEquals(0, roundTitleCounter);
+    }
+  }
+
+  /**
+   * Tests if the game is not in round one.
+   */
   @Test
   void checkRoundOne(){
     if (roundTitleCounter == 1);
     assertFalse(notRoundOne);
   }
 
+  /**
+   * Tests if the roundTitleCounter is 2.
+   */
   @Test
   void checkNotRoundOne(){
     if (roundTitleCounter == 2);
