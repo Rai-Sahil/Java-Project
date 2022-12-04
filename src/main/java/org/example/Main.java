@@ -33,7 +33,7 @@ public class Main {
                     .version(ServerApiVersion.V1)
                     .build())
             .build();
-    // connect to MongoDB
+    // connect mongoClient to MongoDB
     MongoClient mongoClient = MongoClients.create(settings);
     // Use this database unless there are overwrite conflicts
     MongoDatabase database = mongoClient.getDatabase("comp2522fall2022");

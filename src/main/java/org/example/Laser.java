@@ -37,7 +37,11 @@ public class Laser {
         posY += speed*window.sin(dir);
     }
 
-    void Render(Window window){
+  /**
+   * Render the image of the laser that the player fires.
+   * @param window window for the user
+   */
+  void Render(Window window){
         window.push();
         window.noFill();
         window.stroke(255);

@@ -30,7 +30,7 @@ class PlayerTest {
   void setup(){
     window = new Window();
     player = new Player(window);
-    asteroid = new Asteroid(window);
+//    asteroid = new Asteroid(window);
   }
 
   /**
