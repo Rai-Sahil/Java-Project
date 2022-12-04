@@ -47,7 +47,9 @@ public class Window extends PApplet {
     }
 
     /**
-     * Used for setup of our game when we run it.
+     * Used for setup of our game when we run it. Instantiates all objects
+     * in the setup whenever the game is restarted, or when the player
+     * loses their lives.
      */
     void InstantiateVariables() {
         player = new Player(this);
@@ -81,6 +83,7 @@ public class Window extends PApplet {
         notRoundOne = false;
         roundTitleCounter = 180;
     }
+
 
     public void settings() {
         size(800, 800);
