@@ -17,7 +17,11 @@ import static com.mongodb.client.model.Filters.eq;
 
 public class Main {
 
-
+  /**
+   * Driver Class
+   * @param args
+   * @throws InterruptedException
+   */
   public static void main(String[] args) throws InterruptedException {
 
     String[] appletArgs = new String[]{"Spacesaver"};

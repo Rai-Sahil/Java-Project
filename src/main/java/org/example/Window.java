@@ -254,10 +254,12 @@ public class Window extends PApplet {
             }
         }
 
-        // The clear() method is used to remove all the elements from the List container.
-        // container isn't deleted, just emptied. Once Update() is called in gamestate 1 (new game start), we can
-        // start a fresh game.
-        //REMOVE
+        /**
+         * The clear() method is used to remove all the elements from the List container.
+         *
+         * Container isn't deleted, just emptied. Once Update() is called
+         * gameState 1 (new game starts) , we can start a fresh game
+         */
         for (int i = 0; i < laserRemove.size(); i++) {
             if (laserRemove.get(i) < lasers.size()) lasers.remove(laserRemove.get(i));
         }
