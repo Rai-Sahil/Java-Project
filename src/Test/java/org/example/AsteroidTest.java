@@ -185,7 +185,8 @@ class AsteroidTest {
   }
 
   /**
-   * Tests if the posY of an asteroid updates in a random direction * the speed.
+   * Tests if the posY of an asteroid updates in a random direction
+   * multiplied by the speed of the asteroid.
    */
   @Test
     void checkUpdate2(){
