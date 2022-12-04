@@ -18,6 +18,9 @@ class LaserTest {
   float dir;
   float size;
 
+  /**
+   * Sets up before each test begins.
+   */
     @BeforeEach
     void setUp() {
       window = new Window();

@@ -23,6 +23,9 @@ class PlayerTest {
 
   boolean collision = true;
 
+  /**
+   * Sets up before each test begins.
+   */
   @BeforeEach
   void setup(){
     window = new Window();
@@ -30,6 +33,9 @@ class PlayerTest {
     asteroid = new Asteroid(window);
   }
 
+  /**
+   * Tests position x of the laser to check if it's moving.
+   */
   @Test
   void checkPosXLaser1(){
     if (posX > window.width){
@@ -37,6 +43,10 @@ class PlayerTest {
     }
   }
 
+  /**
+   * Tests the position x of the laser relative to the height
+   * of the window.
+   */
   @Test
   void checkNotPosXLaser(){
     if (posX > window.height){
@@ -44,6 +54,9 @@ class PlayerTest {
     }
   }
 
+  /**
+   * Tests the laser position x if it's moving.
+   */
   @Test
   void checkPosXLaser2(){
     if (posX < 0){
@@ -51,6 +64,10 @@ class PlayerTest {
     }
   }
 
+  /**
+   * Tests if the position x of the laser fired is moving
+   * backwards when fired.
+   */
   @Test
   void checkNotPosXLaser2(){
     if (posX < 0){
@@ -58,6 +75,9 @@ class PlayerTest {
     }
   }
 
+  /**
+   * Tests position y of the laser to check if it's moving.
+   */
   @Test
   void checkPosYLaser1(){
     if (posY > window.height){
@@ -65,6 +85,10 @@ class PlayerTest {
     }
   }
 
+  /**
+   * Tests if the position x of the laser fired is moving
+   * backwards when fired.
+   */
   @Test
   void checkPosYLaser2(){
     if (posY < 0){
