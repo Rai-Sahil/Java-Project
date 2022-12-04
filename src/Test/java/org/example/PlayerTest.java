@@ -95,16 +95,4 @@ class PlayerTest {
       assertEquals(window.height, posY);
     }
   }
-
-//  @Test
-//  void checkCollision(){
-//    float value = window.dist(posX, posY, asteroid.posX, asteroid.posY);
-//    if (value < (asteroid.size+size) * 4/5){
-//      assertTrue(collision);
-//    }
-//  }
-
-
-
-
 }
