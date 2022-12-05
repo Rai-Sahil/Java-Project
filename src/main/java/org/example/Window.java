@@ -47,7 +47,9 @@ public class Window extends PApplet {
     }
 
     /**
-     * Used for setup of our game when we run it.
+     * Used for setup of our game when we run it. Instantiates all objects
+     * in the setup whenever the game is restarted, or when the player
+     * loses their lives.
      */
     void InstantiateVariables() {
         player = new Player(this);
@@ -81,6 +83,7 @@ public class Window extends PApplet {
         notRoundOne = false;
         roundTitleCounter = 180;
     }
+
 
     public void settings() {
         size(800, 800);
@@ -251,10 +254,12 @@ public class Window extends PApplet {
             }
         }
 
-        // The clear() method is used to remove all the elements from the List container.
-        // container isn't deleted, just emptied. Once Update() is called in gamestate 1 (new game start), we can
-        // start a fresh game.
-        //REMOVE
+        /**
+         * The clear() method is used to remove all the elements from the List container.
+         *
+         * Container isn't deleted, just emptied. Once Update() is called
+         * gameState 1 (new game starts) , we can start a fresh game
+         */
         for (int i = 0; i < laserRemove.size(); i++) {
             if (laserRemove.get(i) < lasers.size()) lasers.remove(laserRemove.get(i));
         }

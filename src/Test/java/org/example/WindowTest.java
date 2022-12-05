@@ -73,6 +73,28 @@ class WindowTest {
   }
 
   /**
+   * Tests if the gameState is incorrect.
+   */
+  @Test
+  void checkWrongGameState(){
+    if (keyCode == 10){
+      gameState = 4;
+      assertNotEquals(gameState, 1);
+    }
+  }
+
+  /**
+   * Tests if the gameState is out of bounds.
+   */
+  @Test
+  void checkWrongGameState2(){
+    if (keyCode == 10){
+      gameState = 3;
+      assertNotEquals(gameState, 0);
+    }
+  }
+
+  /**
    * Checks if the gameState is 2.
    */
   @Test

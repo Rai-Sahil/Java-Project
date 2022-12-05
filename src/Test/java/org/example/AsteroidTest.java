@@ -165,7 +165,28 @@ class AsteroidTest {
     }
 
   /**
-   * Tests if the posY of an asteroid updates in a random direction * the speed.
+   * Tests if the posX of an asteroid decrements its position in a random direction
+   * * the speed.
+   */
+  @Test
+  void checkDecrementUpdate1(){
+    posX -= window.cos(randomDir)*speed;
+    assertEquals(posX -= window.cos(randomDir)*speed, posX);
+  }
+
+  /**
+   * Tests if the posY of an asteroid decrements its position in a random direction
+   * * the speed.
+   */
+  @Test
+  void checkDecrementUpdate2(){
+    posY -= window.cos(randomDir)*speed;
+    assertEquals(posX -= window.cos(randomDir)*speed, posY);
+  }
+
+  /**
+   * Tests if the posY of an asteroid updates in a random direction
+   * multiplied by the speed of the asteroid.
    */
   @Test
     void checkUpdate2(){
