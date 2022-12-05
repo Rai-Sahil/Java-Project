@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.TextBoxTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2022-12-05T03:58:36" hostname="DESKTOP-2KRJOD4" time="0.113">
+  <properties/>
+  <testcase name="checkIsKeyANumber()" classname="org.example.TextBoxTest" time="0.05"/>
+  <testcase name="checkIfTextDeleted()" classname="org.example.TextBoxTest" time="0.002"/>
+  <testcase name="checkWrongKeyThirtyTwoPressed()" classname="org.example.TextBoxTest" time="0.002"/>
+  <testcase name="testPRESSED()" classname="org.example.TextBoxTest" time="0.002"/>
+  <testcase name="checkWrongKeyTenPressed()" classname="org.example.TextBoxTest" time="0.002"/>
+  <testcase name="checkIfTextNotDeleted()" classname="org.example.TextBoxTest" time="0.001"/>
+  <testcase name="testKeyPressed()" classname="org.example.TextBoxTest" time="0.001"/>
+  <testcase name="checkIsKeyCapital()" classname="org.example.TextBoxTest" time="0.001"/>
+  <testcase name="textSizeFits()" classname="org.example.TextBoxTest" time="0.001"/>
+  <testcase name="checkWrongKeyEightPressed()" classname="org.example.TextBoxTest" time="0.002"/>
+  <testcase name="testKeyPressed2()" classname="org.example.TextBoxTest" time="0.001"/>
+  <testcase name="testKeyPressed3()" classname="org.example.TextBoxTest" time="0.003"/>
+  <testcase name="checkIsKeyLowerCase2()" classname="org.example.TextBoxTest" time="0.001"/>
+  <testcase name="checkIsKeyNotANumber()" classname="org.example.TextBoxTest" time="0.001"/>
+  <testcase name="checkIsKeyLowerCase()" classname="org.example.TextBoxTest" time="0.004"/>
+  <testcase name="checkIsKeyInRange()" classname="org.example.TextBoxTest" time="0.002"/>
+  <testcase name="checkIsKeyCapital2()" classname="org.example.TextBoxTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

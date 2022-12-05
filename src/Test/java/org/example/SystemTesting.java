@@ -5,8 +5,11 @@ import processing.core.PApplet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainTest {
+class SystemTesting {
 
+    /**
+     * The speed of whole program should be less than 2 sec
+     */
     @Test
     public void speedTest(){
         long windowStart = System.currentTimeMillis();
@@ -19,5 +22,4 @@ class MainTest {
 
         assertTrue((windowEnd - windowStart) < 2000);
     }
-
 }

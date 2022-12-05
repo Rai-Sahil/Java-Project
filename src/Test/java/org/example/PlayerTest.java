@@ -11,17 +11,8 @@ class PlayerTest {
 
   Player player;
 
-  Asteroid asteroid;
-
   float posX;
   float posY;
-  int size;
-  float rotation;
-  float MAXSPEED;
-  int isRotating;
-  boolean shotFired;
-
-  boolean collision = true;
 
   /**
    * Sets up before each test begins.
@@ -29,8 +20,7 @@ class PlayerTest {
   @BeforeEach
   void setup(){
     window = new Window();
-    player = new Player(window);
-//    asteroid = new Asteroid(window);
+    player = Player.getInstance(window);
   }
 
   /**

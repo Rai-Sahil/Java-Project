@@ -15,7 +15,6 @@ class StarTest {
   public boolean isMoving = true;
   public boolean isNotMoving = true;
   float size;
-  float colour;
   int margin = 50;
   float speed;
   int TOP_SPEED = 1;

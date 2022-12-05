@@ -2,8 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import processing.core.PImage;
-import processing.core.PVector;
+import processing.core.PApplet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,17 +11,9 @@ class AsteroidTest {
 
     Window window;
 
-    PImage bot;
-
-    PImage bot2;
-
-    int asteroid;
-
     float posX;
 
     float posY;
-
-    float size;
 
     float randomDir;
 
@@ -38,7 +29,7 @@ class AsteroidTest {
   @BeforeEach
     void setup(){
         window = new Window();
-        player = new Player(window);
+        player = Player.getInstance(window);
     }
 
   /**
@@ -89,10 +80,10 @@ class AsteroidTest {
    */
   @Test
     void checkRandPos1(){
-        if(window.floor(window.random(0, 2)) == 0){
+        if(PApplet.floor(window.random(0, 2)) == 0){
             top = true;
         }
-        assertEquals(true, top);
+      assertTrue(top);
     }
 
   /**
@@ -101,10 +92,10 @@ class AsteroidTest {
    */
   @Test
     void checkRandPos2(){
-        if(window.floor(window.random(0, 2)) == 0){
+        if(PApplet.floor(window.random(0, 2)) == 0){
             left = true;
         }
-        assertEquals(true, left);
+      assertTrue(left);
     }
 
   /**
@@ -161,7 +152,7 @@ class AsteroidTest {
   @Test
     void checkUpdate1(){
         posX += window.cos(randomDir)*speed;
-        assertEquals(posX += window.cos(randomDir)*speed, posX);
+        assertEquals(posX += PApplet.cos(randomDir)*speed, posX);
     }
 
   /**
@@ -170,8 +161,8 @@ class AsteroidTest {
    */
   @Test
   void checkDecrementUpdate1(){
-    posX -= window.cos(randomDir)*speed;
-    assertEquals(posX -= window.cos(randomDir)*speed, posX);
+    posX -= PApplet.cos(randomDir)*speed;
+    assertEquals(posX -= PApplet.cos(randomDir)*speed, posX);
   }
 
   /**
@@ -180,8 +171,8 @@ class AsteroidTest {
    */
   @Test
   void checkDecrementUpdate2(){
-    posY -= window.cos(randomDir)*speed;
-    assertEquals(posX -= window.cos(randomDir)*speed, posY);
+    posY -= PApplet.cos(randomDir)*speed;
+    assertEquals(posX -= PApplet.cos(randomDir)*speed, posY);
   }
 
   /**
@@ -190,8 +181,8 @@ class AsteroidTest {
    */
   @Test
     void checkUpdate2(){
-        posY += window.sin(randomDir)*speed;
-        assertEquals(posY += window.sin(randomDir)*speed, posY);
+        posY += PApplet.sin(randomDir)*speed;
+        assertEquals(posY += PApplet.sin(randomDir)*speed, posY);
     }
 
 }

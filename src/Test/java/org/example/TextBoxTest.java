@@ -20,12 +20,10 @@ class TextBoxTest {
   boolean textFits = true;
 
   public int textSize = 32;
-  public int X = 0, Y = 0, H = 35, W = 200;
   public boolean BorderEnable = true;
   private boolean selected = true;
   public int TextLength = 0;
   public String Text = "";
-  public int BorderWeight = 1;
 
   /**
    * Sets up before each test begins.
@@ -34,11 +32,6 @@ class TextBoxTest {
     void setUp() {
       textBox = new TextBox();
       window = new Window();
-    }
-
-    @Test
-    void testDraw() {
-
     }
 
   /**
@@ -176,28 +169,21 @@ class TextBoxTest {
   }
 
   /**
-   * Tests if the text is deleted.
-   */
-  @Test
-  void checkIfTextDeleted(){
-      if (TextLength - 1 >= 0){
-        Text = Text.substring(0, TextLength - 1);
-        assertTrue(isTextDeleted);
-      }
-  }
-
-  /**
    * Tests if the text is not deleted.
    */
+
   @Test
   void checkIfTextNotDeleted(){
-      if (TextLength - 1 >= 0){
-        Text = Text.substring(0, TextLength - 1);
+    if (TextLength - 1 >= 0){
+      int initial = TextLength;
+      Text = Text.substring(0, TextLength - 1);
+      if(Text.length() < initial) {
         isTextDeleted = false;
-        assertFalse(isTextDeleted);
-
       }
+      assertFalse(isTextDeleted);
+    }
   }
+
 
   /**
    * Tests if the text fits within the textbox
