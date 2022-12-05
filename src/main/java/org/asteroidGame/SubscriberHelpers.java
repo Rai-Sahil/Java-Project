@@ -1,4 +1,4 @@
-package org.example;
+package org.asteroidGame;
 
 /*
  * Copyright 2015 MongoDB, Inc.

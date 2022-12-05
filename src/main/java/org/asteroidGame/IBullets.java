@@ -1,4 +1,4 @@
-package org.example;
+package org.asteroidGame;
 
 public interface IBullets {
     Laser Fire(Window window);

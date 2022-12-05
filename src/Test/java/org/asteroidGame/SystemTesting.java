@@ -1,4 +1,4 @@
-package org.example;
+package org.asteroidGame;
 
 import org.junit.jupiter.api.Test;
 import processing.core.PApplet;

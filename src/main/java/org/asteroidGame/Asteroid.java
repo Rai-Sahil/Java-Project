@@ -1,6 +1,5 @@
-package org.example;
+package org.asteroidGame;
 
-import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PImage;
 

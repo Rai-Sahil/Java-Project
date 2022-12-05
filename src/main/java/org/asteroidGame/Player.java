@@ -1,4 +1,4 @@
-package org.example;
+package org.asteroidGame;
 
 public class Player implements ICollidable, IBullets{
 
