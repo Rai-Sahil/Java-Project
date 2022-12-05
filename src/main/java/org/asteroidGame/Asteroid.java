@@ -22,8 +22,8 @@ public class Asteroid {
         size = 50;
         randomDir = window.random(0, PConstants.TWO_PI);
         speed = 2;
-        bot = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\asteroids.png");
-        bot2 = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\asteroid2.png");
+        bot = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\Resourses\\asteroids.png");
+        bot2 = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\Resourses\\asteroids2.png");
         asteroid = (int) window.random(0, 2);
     }
 

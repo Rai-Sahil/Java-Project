@@ -41,8 +41,8 @@ public class Window extends PApplet{
         frameRate(60);
         InstantiateVariables();//This gets call whenever we restart the game...
         gameState = 0;
-        bot = loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\Resourses\\1335908-middle-removebg-preview.png");
-        gameOver = loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\Game-Over-PNG-Image.png");
+        bot = loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\Resourses\\MenuSpaceShip.png");
+        gameOver = loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\Resourses\\Game-Over-PNG-Image.png");
     }
 
     /**

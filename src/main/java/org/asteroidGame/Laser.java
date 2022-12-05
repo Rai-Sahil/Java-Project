@@ -25,7 +25,7 @@ public class Laser implements ICollidable, IDrawable{
         posX += 25*window.cos(dir);
         posY += 25*window.sin(dir);
         size = 2;
-        bot = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\JavaProject\\src\\main\\java\\org\\example\\kisspng-light-download-color-yellow-glare-light-effects-5a99f9b9a49f01.5350402715200403776743.png");
+        bot = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\Resourses\\ShootingLaser.png");
     }
 
   /** Updates the speed in which the direction of the laser is flying.
