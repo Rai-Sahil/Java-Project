@@ -1,8 +1,6 @@
 package org.example;
 
-import org.example.Window;
-
-public class TextBox {
+public class TextBox implements IText{
 
     public int textSize = 32;
     public int X = 0, Y = 0, H = 35, W = 200;
@@ -31,16 +29,9 @@ public class TextBox {
    * Draws the rectangle for the TextBox when the game starts.
    * @param w window for the user
    */
-  void draw(Window w){
-        if(selected){
-            //w.background(160, 160, 160);
-        } else{
-            //w.background(140, 140, 140);
-        }
-//        w.strokeWeight(3);
-//        w.stroke(30, 30, 30);
+  @Override
+  public void draw(Window w){
         w.noStroke();
-
         w.noFill();
         w.rect(X, Y, W, H);
         w.textSize(textSize);
@@ -55,10 +46,11 @@ public class TextBox {
    * @return true if the correct keycodes are pressed, 8 for backspace,
    * 10 is for enter key, and 32 for space. Returns false otherwise
    */
-    boolean keyPressed(char key, int keyCode, Window w) {
+  @Override
+  public boolean keyPressed(char key, int keyCode, Window w) {
         if (selected) {
             if (keyCode == 8) {
-                BACKSPACE();
+                backspace();
             } else if (keyCode == 32) {
                 addText(' ', w);
             } else if (keyCode == 10) {
@@ -83,7 +75,8 @@ public class TextBox {
    * @param text characters entered
    * @param w window for the user
    */
-  private void addText(char text, Window w) {
+  @Override
+  public void addText(char text, Window w) {
         // IF THE TEXT WIDTH IS IN BOUNDARIES OF THE TEXTBOX
         if (w.textWidth(Text + text) < W) {
             Text += text;
@@ -94,7 +87,7 @@ public class TextBox {
   /**
    * Used to delete characters in the TextBox.
    */
-  private void BACKSPACE() {
+  private void backspace() {
         if (TextLength - 1 >= 0) {
             Text = Text.substring(0, TextLength - 1);
             TextLength--;
@@ -116,7 +109,8 @@ public class TextBox {
         return false;
     }
 
-    void PRESSED(int x, int y) {
+    @Override
+    public void pressed(int x, int y) {
         if (overBox(x, y)) {
             selected = true;
         } else {

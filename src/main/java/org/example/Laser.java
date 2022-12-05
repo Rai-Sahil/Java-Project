@@ -2,7 +2,7 @@ package org.example;
 
 import processing.core.PImage;
 
-public class Laser {
+public class Laser implements ICollidable, IDrawable{
     PImage bot;
     float posX;
     float posY;
@@ -32,7 +32,8 @@ public class Laser {
    *
    * @param window window for the user
    */
-    void Update(Window window){
+  @Override
+  public void Update(Window window){
         posX += speed*window.cos(dir);
         posY += speed*window.sin(dir);
     }
@@ -41,12 +42,12 @@ public class Laser {
    * Render the image of the laser that the player fires.
    * @param window window for the user
    */
-  void Render(Window window){
+  @Override
+  public void Render(Window window){
         window.push();
         window.noFill();
         window.stroke(255);
         window.strokeWeight(1);
-//        window.rect(posX, posY, size, size + 10f);
         window.image(bot, posX-7, posY-7, 20, 20);
         window.pop();
     }
@@ -58,6 +59,7 @@ public class Laser {
    * @param window window for the user
    * @return true if the asteroid is hit in the hit box (center of the asteroid)
    */
+    @Override
     public boolean CheckCollision(Asteroid a, Window window){
         float d = window.dist(posX, posY, a.posX, a.posY);
 

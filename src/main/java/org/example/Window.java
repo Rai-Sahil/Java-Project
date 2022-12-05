@@ -2,13 +2,12 @@ package org.example;
 
 import processing.core.PApplet;
 import processing.core.PImage;
-import processing.core.PShape;
 import processing.core.PVector;
 import processing.data.IntList;
 
 import java.util.ArrayList;
 
-public class Window extends PApplet {
+public class Window extends PApplet{
 
     PImage bot;
     PImage gameOver;
@@ -51,8 +50,8 @@ public class Window extends PApplet {
      * in the setup whenever the game is restarted, or when the player
      * loses their lives.
      */
-    void InstantiateVariables() {
-        player = new Player(this);
+    public void InstantiateVariables() {
+        player = Player.getInstance(this);
         asteroids = new ArrayList<Asteroid>();
         stars = new ArrayList<Star>();
         textboxes = new ArrayList<TextBox>();
@@ -132,7 +131,6 @@ public class Window extends PApplet {
                     s.move(dir, this);
                 }
                 result = score;
-                System.out.println(result);
                 break;
             }
             case 2 -> {
@@ -157,7 +155,7 @@ public class Window extends PApplet {
      * Once the first round is about to finish, the window is repopulated with 5-8 asteroids
      * into the window for round2.
      */
-    void RoundUpdate() {
+    public void RoundUpdate() {
         if (roundTitleCounter > 0) roundTitleCounter--;//If there is any timer subtract the timer
         else {
             roundTitleCounter = 0;
@@ -210,9 +208,6 @@ public class Window extends PApplet {
         }
     }
 
-    public void death(int value) {
-
-    }
 
     /**
      * Updates each object as needed.
@@ -351,7 +346,7 @@ public class Window extends PApplet {
      */
     public void mousePressed() {
         for (TextBox t : textboxes) {
-            t.PRESSED(mouseX, mouseY);
+            t.pressed(mouseX, mouseY);
         }
     }
 

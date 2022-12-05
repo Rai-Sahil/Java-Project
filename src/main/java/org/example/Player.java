@@ -1,9 +1,8 @@
 package org.example;
 
-import processing.core.PApplet;
+public class Player implements ICollidable, IBullets{
 
-public class Player{
-
+    private static Player player = null;
     float posX;
     float posY;
     int size;
@@ -16,7 +15,7 @@ public class Player{
    * Constructor for the Player class.
    * @param window window for the user
    */
-  Player(Window window){
+  private Player(Window window){
         posX = window.width / 2;
         posY = window.height / 2;
         size = 15;
@@ -26,11 +25,19 @@ public class Player{
         shotFired = false;
     }
 
+    public static Player getInstance(Window window){
+        if(player == null){
+            player = new Player(window);
+        }
+        return player;
+    }
+
   /** Regular lasers fired at rounds < 5.
    *
    * @param window window for the user
    * @return laser beam when fired from player.
    */
+  @Override
   public Laser Fire(Window window){
         Laser beam = new Laser(posX, posY, rotation, window);
         return beam;
@@ -41,14 +48,15 @@ public class Player{
    * @param window window for the user
    * @return laser beam when fired from the player
    */
+  @Override
   public Laser Fire2(Window window){
         Laser beam = new Laser(posX+30, posY+30, rotation, window);
         return beam;
     }
-
-  /**
+    /**
    * Updates the rotation of the player left and right.
    */
+
   public void Update(){
         if(isRotating == -1){// LEFT
             rotation = rotation + MAXSPEED;
@@ -76,6 +84,7 @@ public class Player{
   /** Checks collision between an asteroid object and the window,
    *  Hit box is made larger to make it easier for laser impact.
    */
+  @Override
     public boolean CheckCollision(Asteroid a, Window window){
         float d = window.dist(posX, posY, a.posX, a.posY);
 

@@ -1,6 +1,6 @@
 package org.example;
 
-public class Pixel {
+public class Pixel{
     float posX;
     float posY;
     float size;

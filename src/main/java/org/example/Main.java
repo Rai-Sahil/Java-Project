@@ -63,7 +63,5 @@ public class Main {
             // subscribe takes a class that defines the callback
             .first().subscribe(new SubscriberHelpers.PrintDocumentSubscriber());
 
-
-
   }
 }
