@@ -1,5 +1,7 @@
 package org.asteroidGame;
 
+import processing.core.PImage;
+
 public class Player implements ICollidable, IBullets{
 
     private static Player player = null;
@@ -10,6 +12,7 @@ public class Player implements ICollidable, IBullets{
     float MAXSPEED;
     int isRotating;
     boolean shotFired;
+    PImage bot;
 
   /**
    * Constructor for the Player class.
@@ -23,6 +26,7 @@ public class Player implements ICollidable, IBullets{
         MAXSPEED = window.PI/50;
         isRotating = 0;
         shotFired = false;
+        bot = window.loadImage("C:\\Users\\raisa\\IdeaProjects\\Java-Project\\src\\main\\java\\Resourses\\SpaceShip.png");
     }
 
     public static Player getInstance(Window window){
@@ -38,7 +42,7 @@ public class Player implements ICollidable, IBullets{
    * @return laser beam when fired from player.
    */
   @Override
-  public Laser Fire(Window window){
+  public Laser Fire(Window window, float posX, float posY, float rotation){
         Laser beam = new Laser(posX, posY, rotation, window);
         return beam;
     }
@@ -49,8 +53,8 @@ public class Player implements ICollidable, IBullets{
    * @return laser beam when fired from the player
    */
   @Override
-  public Laser Fire2(Window window){
-        Laser beam = new Laser(posX+30, posY+30, rotation, window);
+  public Laser Fire2(Window window, float posX, float posY, float rotation){
+        Laser beam = new Laser(posX, posY, rotation, window);
         return beam;
     }
     /**
@@ -77,7 +81,7 @@ public class Player implements ICollidable, IBullets{
         window.noFill();
         window.stroke(255);
         window.strokeWeight(2);
-        window.triangle( 0, -size*2, -size, size, size, size);
+        window.image(bot, -size*2 - 15, -size - 25, 90, 90);
         window.pop();
     }
 
@@ -88,7 +92,7 @@ public class Player implements ICollidable, IBullets{
     public boolean CheckCollision(Asteroid a, Window window){
         float d = window.dist(posX, posY, a.posX, a.posY);
 
-        if(d < (a.size+size)*4/5){
+        if(d < (a.size + size + 5)*4/5){
             return true;
         }
         else {

@@ -29,6 +29,8 @@ public class Window extends PApplet{
     boolean notRoundOne;
     boolean send = false;
     float speed;
+    int lowAsteroids = 5;
+    int highAsteroids = 8;
     String msg = "";
     String name = "";
 
@@ -78,7 +80,7 @@ public class Window extends PApplet{
         pixelRemove = new IntList();
 
         score = 0;
-        round = 1;
+        round = 5;
         notRoundOne = false;
         roundTitleCounter = 180;
     }
@@ -164,7 +166,7 @@ public class Window extends PApplet{
 
         //ABout to finish a round but not in first round...
         if (roundTitleCounter == 1 && notRoundOne) {
-            for (int i = 0; i < floor(random(5, 8)); i++) {
+            for (int i = 0; i < floor(random(lowAsteroids, highAsteroids)); i++) {
                 asteroids.add(new Asteroid(this));
             }
         }
@@ -296,9 +298,15 @@ public class Window extends PApplet{
                 }
                 if (keyCode == 32) {
                     if (!player.shotFired) {
-                        lasers.add(player.Fire(this));
-                        if (round > 4) {
-                            lasers.add(player.Fire2(this));
+                        if (round <= 4) {
+                            lasers.add(player.Fire(this, player.posX, player.posY, player.rotation));
+                        }
+                        else {
+                            lasers.add(player.Fire(this, player.posX - 15, player.posY - 15, player.rotation));
+                            lasers.add(player.Fire2(this, player.posX + 15, player.posY + 15, player.rotation));
+                            lowAsteroids = 8;
+                            highAsteroids = 11;
+                            player.MAXSPEED = PI/40;
                         }
                         player.shotFired = true;
                     }
