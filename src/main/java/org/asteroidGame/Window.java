@@ -80,7 +80,7 @@ public class Window extends PApplet{
         pixelRemove = new IntList();
 
         score = 0;
-        round = 5;
+        round = 1;
         notRoundOne = false;
         roundTitleCounter = 180;
     }
